@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "components/navigation/signinupnavigate.js", "components/Account/SIGNUP/SignUp.js", "components/Account/SIGNIN/Button.js", "components/Account/SIGNIN/MainSignIn.jscompcomponents/Account/SIGNIN/Logo.jscompcomponents/Account/SIGNIN/TextFields.jsapp/(tabs)/index.js"  ]
 }
