@@ -8,7 +8,9 @@ import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
 import { StyleSheet } from "react-native";
+import Feed from "../Feed/feed";
 
 function BottomNavigator() {
   //const stack = createNativeStackNavigator();
@@ -19,10 +21,10 @@ function BottomNavigator() {
         tabBarLabelStyle: {
           height: 35,
         },
-        tabBarStyle:{
-          height:"10%"
+        tabBarStyle: {
+          height: "10%",
         },
-        tabBarActiveTintColor:"red"
+        tabBarActiveTintColor: "red",
       }}
     >
       <Tab.Screen
@@ -32,6 +34,7 @@ function BottomNavigator() {
       />
 
       <Tab.Screen name="Shop" component={Shop} options={styles.ShopStyle} />
+      <Tab.Screen name="Feed" component={Feed} options={styles.feedstyle} />
       <Tab.Screen name="Cart" component={Cart} options={styles.MyKart} />
       <Tab.Screen
         name="Account"
@@ -87,5 +90,15 @@ const styles = StyleSheet.create({
         <AntDesign name="shoppingcart" size={24} color="black" />
       ),
   },
+  feedstyle:{
+    tabBarLabel: "Feed",
+    headerShown: false,
+    tabBarIcon: ({ focused }) =>
+      focused ? (
+        <FontAwesome name="feed" size={24} color="red" />
+      ) : (
+        <FontAwesome name="feed" size={24} color="black" />
+      ),
+  }
 });
 export default BottomNavigator;

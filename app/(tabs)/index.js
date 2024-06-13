@@ -2,6 +2,7 @@ import { Image, StyleSheet, Platform, SafeAreaView ,Dimensions,StatusBar,Text, V
 import React from "react";
 import BottomNavigator from '../../components/navigation/BottomNavigator';
 import { NavigationContainer } from '@react-navigation/native';
+import Wallpaper from '../../components/Homescreen/Wallpaper';
 
 
 
@@ -11,6 +12,8 @@ export default function App() {
       <NavigationContainer independent={true}>
         <BottomNavigator></BottomNavigator>
       </NavigationContainer>
+     {/* <Wallpaper></Wallpaper> */}
+
     </SafeAreaView>
   );
 }
