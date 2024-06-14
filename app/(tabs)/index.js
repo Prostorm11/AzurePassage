@@ -2,17 +2,23 @@ import { Image, StyleSheet, Platform, SafeAreaView ,Dimensions,StatusBar,Text, V
 import React from "react";
 import BottomNavigator from '../../components/navigation/BottomNavigator';
 import { NavigationContainer } from '@react-navigation/native';
-import Wallpaper from '../../components/Homescreen/Wallpaper';
+import SmallImageBox from '../../components/Homescreen/SmallImageBox';
+
+
 
 
 
 export default function App() {
+  const Myimage = [
+    require("@/assets/images/girlshoper.gif"),
+    require("@/assets/images/gadgets.gif"),
+  ];
   return (
     <SafeAreaView style={styles.SafeAreaViewStyle}>
-      <NavigationContainer independent={true}>
+       <NavigationContainer independent={true}>
         <BottomNavigator></BottomNavigator>
       </NavigationContainer>
-     {/* <Wallpaper></Wallpaper> */}
+     
 
     </SafeAreaView>
   );

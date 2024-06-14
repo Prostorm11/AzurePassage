@@ -35,13 +35,13 @@ function Wallpaper({picture,text1,text2,describe}) {
 const styles = StyleSheet.create({
   View1style: {
     backgroundColor: "#bbbbc8",
-    
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: 5,
     paddingHorizontal: 10,
-    width:Dimensions.get("screen").width
+    width:Dimensions.get("screen").width,
+    height:Dimensions.get("screen").height*0.35
   },
   View2style: {
     height: "80%",
