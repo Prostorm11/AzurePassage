@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     height: 133,
     width: 116.5,
     resizeMode: "stretch",
+    borderRadius:10
   },
 });
 
