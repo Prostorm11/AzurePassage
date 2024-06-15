@@ -18,14 +18,14 @@ import randomimages from "../../api/randomimages";
 export default function App() {
   return (
     <SafeAreaView style={styles.SafeAreaViewStyle}>
-      {/*        <NavigationContainer independent={true}>
+             <NavigationContainer independent={true}>
         <BottomNavigator></BottomNavigator>
-      </NavigationContainer> */}
-      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+      </NavigationContainer>
+      {/* <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
         <TwoDimage image={randomimages[0].image} addons={randomimages[0].addons}></TwoDimage>
         <TwoDimage image={randomimages[1].image} addons={randomimages[1].addons}></TwoDimage>
         
-      </View>
+      </View> */}
       {/* <Scrollingmessage height={100}></Scrollingmessage> */}
     </SafeAreaView>
   );
