@@ -17,6 +17,8 @@ import Wallpaper from "./Wallpaper";
 import SmallImageBox from "./SmallImageBox";
 import Superimages from "../../api/Superimages";
 import Femalefashion from "../../api/Femalefashion";
+import randomimages from "../../api/randomimages";
+import TwoDimage from "./TwoDimage";
 
 function Homescreen() {
   const [text, textchange] = useState("");
@@ -163,9 +165,14 @@ function Homescreen() {
                   rate={item.rate}
                 />
               ))}
-            </ScrollView>
+            </ScrollView>  
           </View>
         </TouchableWithoutFeedback>
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          {randomimages.map((item,key)=>(
+            <TwoDimage image={item.image} addons={item.addons} nprice={item.newprice} sold={item.sold}></TwoDimage>
+          ))}
+        </View>  
       </ScrollView>
     </View>
   );
