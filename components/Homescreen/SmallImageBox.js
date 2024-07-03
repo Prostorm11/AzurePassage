@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   imagestyle: {
     height: 133,
     width: 116.5,
-    resizeMode: "stretch",
+    resizeMode: "cover",
     borderRadius:10
   },
 });

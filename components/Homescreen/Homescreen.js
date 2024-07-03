@@ -11,7 +11,6 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import Wallpaper from "./Wallpaper";
 import SmallImageBox from "./SmallImageBox";
@@ -19,12 +18,13 @@ import Superimages from "../../api/Superimages";
 import Femalefashion from "../../api/Femalefashion";
 import randomimages from "../../api/randomimages";
 import TwoDimage from "./TwoDimage";
+import Menu from "./Menu";
+import Searchbutton from "./searchbutton";
 
 function Homescreen() {
-  const [text, textchange] = useState("");
   const [superImagesData, setSuperImagesData] = useState([]);
   const [femaleFashionData, setFemaleFashionData] = useState([]);
-  
+
   const Myimage = [
     require("@/assets/images/girlshoper.gif"),
     require("@/assets/images/gadgets.gif"),
@@ -44,7 +44,7 @@ function Homescreen() {
           animated: true,
         });
       }
-    }, 5000); 
+    }, 5000);
 
     return () => clearInterval(intervalId);
   }, [currentIndex, width]);
@@ -66,20 +66,12 @@ function Homescreen() {
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.View1Style}>
-        <Entypo name="menu" size={28} color="black" />
+        <Menu></Menu>
         <Text style={{ color: "red", fontSize: 15, fontWeight: "bold" }}>
           GlamCart
         </Text>
-        <Pressable style={styles.pressablestyle}>
-          <EvilIcons name="search" size={24} color="black" />
-          <TextInput
-            placeholder="Search Items"
-            placeholderTextColor="black"
-            value={text}
-            onChangeText={(newtext) => textchange(newtext)}
-            style={styles.textfieldstyle}
-          />
-        </Pressable>
+        
+        <Searchbutton></Searchbutton>
         <EvilIcons name="bell" size={28} color="black" />
       </View>
       <ScrollView>
@@ -165,14 +157,25 @@ function Homescreen() {
                   rate={item.rate}
                 />
               ))}
-            </ScrollView>  
+            </ScrollView>
           </View>
         </TouchableWithoutFeedback>
         <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-          {randomimages.map((item,key)=>(
-            <TwoDimage image={item.image} addons={item.addons} nprice={item.newprice} sold={item.sold}></TwoDimage>
+          {randomimages.map((item, key) => (
+            <TwoDimage
+              key={key}
+              image={item.image}
+              addons={item.addons}
+              nprice={item.newprice}
+              sold={item.sold}
+              title={item.title}
+              id={item.id}
+              description={item.description}
+              more={item.more}
+
+            />
           ))}
-        </View>  
+        </View>
       </ScrollView>
     </View>
   );
@@ -208,6 +211,21 @@ const styles = StyleSheet.create({
   imageContainer: {
     marginTop: 10,
     gap: 7,
+  },
+  modal: {
+    justifyContent: "flex-start",
+    margin: 0,
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+    width: "60%",
+    alignSelf: "flex-start",
+  },
+  menuItem: {
+    fontSize: 18,
+    paddingVertical: 10,
   },
 });
 

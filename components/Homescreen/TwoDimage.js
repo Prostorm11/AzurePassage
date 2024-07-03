@@ -2,21 +2,24 @@ import React, {useRef} from "react";
 import { Dimensions, Image, Pressable, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
 import randomimages from "../../api/randomimages";
 import Scrollingmessage from "./scrollingmessage";
+import { useNavigation } from "@react-navigation/native";
 
 
 
 
 
-function TwoDimage({image,nprice,sold,addons}) {
+
+function TwoDimage({image,nprice,sold,addons,title,id,description,more}) {
+  const navigation=useNavigation();
   
   return (
-    <TouchableWithoutFeedback >
+    <TouchableWithoutFeedback onPress={function(){navigation.navigate("productdetails",{identity:id,sold:sold,price:nprice,describe:description,more:more}); console.log(id)}}>
       <View style={styles.View1style} onStartShouldSetResponder={() => true}>
        <View style={styles.View2style}>
         <Image source={{uri:image}} style={styles.imagestyle}></Image>
       </View>
       <View style={styles.View3style}>
-        <Text>{randomimages[0].title}</Text>
+        <Text>{title}</Text>
         <View style={{ flexDirection: "row", gap: 10 ,alignItems:"center"}}>
           <Text style={{fontSize:18,fontWeight:"bold"}}>GHC {nprice}</Text>
           <Text style={{fontSize:12}}>{sold} sold</Text>
