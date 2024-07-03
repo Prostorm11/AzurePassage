@@ -2,6 +2,8 @@ import React from "react";
 import InputText from "../SIGNIN/TextFields";
 import { View, StyleSheet, TextInput, Text } from "react-native";
 import SigninButton from "../SIGNIN/Button";
+
+
 function SignUp() {
   const [text, textchange] = React.useState("");
   return (

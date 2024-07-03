@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   slide: {
     //justifyContent: "center",
-    backgroundColor: "#fff",
+    
     borderRadius: 8,
     flexDirection:"row",
     alignItems:"center"

@@ -11,22 +11,26 @@ import {
 import React from "react";
 import BottomNavigator from "../../components/navigation/BottomNavigator";
 import { NavigationContainer } from "@react-navigation/native";
-import TwoDimage from "../../components/Homescreen/TwoDimage";
-import Scrollingmessage from "../../components/Homescreen/scrollingmessage";
-import randomimages from "../../api/randomimages";
+
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Searchresults from "../../components/Homescreen/Searchresults";
+import ProductDetails from "../../components/Homescreen/ProductDetails";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <SafeAreaView style={styles.SafeAreaViewStyle}>
-             <NavigationContainer independent={true}>
-        <BottomNavigator></BottomNavigator>
-      </NavigationContainer>
-      {/* <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-        <TwoDimage image={randomimages[0].image} addons={randomimages[0].addons}></TwoDimage>
-        <TwoDimage image={randomimages[1].image} addons={randomimages[1].addons}></TwoDimage>
+      <NavigationContainer independent={true}>
+      <Stack.Navigator>
+        <Stack.Screen name="bottomnavigator" component={BottomNavigator} options={{headerShown:false}}/>
+        <Stack.Screen name="searchresults" component={Searchresults} options={{headerShown:false}}/>
+        <Stack.Screen name="productdetails" component={ProductDetails} options={{headerShown:false}}/>
+      </Stack.Navigator>
         
-      </View> */}
-      {/* <Scrollingmessage height={100}></Scrollingmessage> */}
+      </NavigationContainer>
+      {/* <Searchresults></Searchresults> */}
+      {/* <ProductDetails></ProductDetails> */}
     </SafeAreaView>
   );
 }
