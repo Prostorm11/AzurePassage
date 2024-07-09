@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 
 
 
-function Buttons({name}) {
+
+function Buttons({name,operation}) {
+  
     return (
         <View style={styles.view}>
           <TouchableOpacity
             style={styles.elevatedButton}
-            onPress={() => console.log("Pressed")}
+            onPress={() => operation() }
           >
             <Text style={styles.TextStyle}>{name}</Text>
           </TouchableOpacity>

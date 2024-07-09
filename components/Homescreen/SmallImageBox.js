@@ -1,10 +1,14 @@
 import React from "react";
-import { Dimensions, Image, StyleSheet, View, Text } from "react-native";
+import { Dimensions, Image, StyleSheet, View, Text, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-function SmallImageBox({ image, price, rate, sold }) {
+function SmallImageBox({ image, price, rate, sold,store }) {
+  const navigation=useNavigation();
   return (
     <View style={styles.View1style} onStartShouldSetResponder={() => true}>
+    <Pressable onPress={()=>navigation.navigate(store)}>
+
       <View style={styles.View2style}>
         <Image source={image} style={styles.imagestyle} />
       </View>
@@ -18,6 +22,7 @@ function SmallImageBox({ image, price, rate, sold }) {
           <Text style={{ color: "gray", fontSize:12}}>{rate}</Text>
         </View>
       </View>
+    </Pressable>
     </View>
   );
 }

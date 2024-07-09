@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-function Searchtab(props) {
+function Searchtab() {
     const navigation = useNavigation();
     return (
         <View style={styles.View1style}>

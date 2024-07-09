@@ -8,11 +8,8 @@ import {
   Platform,
 } from "react-native";
 
-
-
-
-function Signinupnavigate() {
- const navigation =useNavigation()
+function Wishlisit_history(props) {
+    const navigation =useNavigation()
   const [isUnderlined, setisUnderlined] = useState(true);
   const [isUnderlined2, setisUnderlined2] = useState(false);
 
@@ -40,21 +37,21 @@ function Signinupnavigate() {
       <TouchableOpacity
         onPress={() => { 
           underline1()
-          navigation.navigate("Signin")
+          navigation.navigate("wishlist")
         }}
       >
         <Text style={[styles.Text1, isUnderlined && styles.Underline]}>
-          Login
+          Wishlist
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
          underline2()
-          navigation.navigate("Signup")
+          navigation.navigate("history")
         }}
       >
         <Text style={[styles.Text1, isUnderlined2 && styles.Underline]}>
-          Sign Up
+           History
         </Text>
       </TouchableOpacity>
     </View>
@@ -62,18 +59,18 @@ function Signinupnavigate() {
 }
 
 const styles = StyleSheet.create({
-  View1: {
-    width: "100%",
-    position: "relative",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-   
-  },
-  Text1: {
-    fontSize: 20,
-  },
-  Underline: {
-    textDecorationLine: "underline",
-  },
-});
-export default Signinupnavigate;
+    View1: {
+      width: "50%",
+      position: "relative",
+      flexDirection: "row",
+      justifyContent: "space-evenly",
+     
+    },
+    Text1: {
+      fontSize: 20,
+    },
+    Underline: {
+      textDecorationLine: "underline",
+    },
+  });
+export default Wishlisit_history;
