@@ -1,7 +1,6 @@
 import Shop from "../ShopScreen/Shop";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Homescreen from "../Homescreen/Homescreen";
-import Account from "../Account/Account";
 import Cart from "../MyCart/Cart";
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
@@ -11,6 +10,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from '@expo/vector-icons';
 import { StyleSheet } from "react-native";
 import Feed from "../Feed/feed";
+import MainAccount from "../Account/MainAccount";
 
 function BottomNavigator() {
   //const stack = createNativeStackNavigator();
@@ -19,10 +19,10 @@ function BottomNavigator() {
     <Tab.Navigator
       screenOptions={{
         tabBarLabelStyle: {
-          height: 35,
+          height: 25,
         },
         tabBarStyle: {
-          height: "10%",
+          height: "9%",
         },
         tabBarActiveTintColor: "red",
       }}
@@ -38,7 +38,7 @@ function BottomNavigator() {
       <Tab.Screen name="Cart" component={Cart} options={styles.MyKart} />
       <Tab.Screen
         name="Account"
-        component={Account}
+        component={MainAccount}
         options={styles.AccountStyle}
       />
     </Tab.Navigator>

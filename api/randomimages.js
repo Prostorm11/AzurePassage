@@ -17,7 +17,11 @@ const randomimages=[
         ],
         description:"Experience the pinnacle of innovation with the iPhone 15.",
         addons:true,
-        more:[]
+        more:[
+            "https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2023/02/FpTc36oWIAAagw8-photoutils.com_.jpeg?ssl=1",
+            "https://www.dpreview.com/files/p/articles/2668153890/Apple-iPhone-15-Pro-lineup-color-lineup-230912.jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Jlanfv1mE32AOQ3OvKGZ12OnAUXUFu6Ceg&s"
+        ]
 
     },
     {
@@ -37,7 +41,11 @@ const randomimages=[
         ],
         description:"",
         addons:false,
-        more:[]
+        more:[
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OfikUDigqpmmL2xsN0hQitk9Z2Kn7slZHQ&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbmAWJk98ms7ZuXPlM-20NQQZ1CoiqOTKWvQ&s",
+            "https://img.etimg.com/thumb/width-1200,height-900,imgsize-22024,resizemode-75,msid-101600383/news/international/us/ai-chatgpt-powered-smart-toys-may-soon-be-unveiled-heres-everything-parents-need-to-know-ahead-of-holiday-season.jpg"
+        ]
 
     },
     {
@@ -54,9 +62,12 @@ const randomimages=[
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTtbfAdPs-7cDIBiN2Mesm_gwzsmeX7glFQ&s",
 
         ],
-        description:"",
+        description:"Gear Up for Outdoor Fun",
         addons:false,
-        more:[]
+        more:[
+            "https://ionicbikes.com/wp-content/uploads/2020/10/Johnny-Rotten-Medium-Specs-Geometry.png",
+            "https://billbonebikelaw.com/wp-content/uploads/2015/06/Parts-of-bicycle-anatomy.png"
+        ]
 
     },
     {
@@ -73,9 +84,13 @@ const randomimages=[
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYU4JnVa8I3vziPnuDF6XN8zB5c_8L6Hzyrg&s",
 
         ],
-        description:"",
+        description:"Your Perfect Kitchen Companion",
         addons:true,
-        more:[]
+        more:[
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4EeTD25CJdLkSrqz-rQQ_IRRiAXun1-BcFg&s",
+            "https://pictures-ghana.jijistatic.net/6171183_bamboo-expandable-wooden-cutlery-tray-spoon-holder-tidy_620x620.webp",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXqaJEgItKC2iJOQkt4Niidu3is48YfSgkPw&s"
+        ]
 
     },
     {
@@ -91,9 +106,14 @@ const randomimages=[
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHlsCzGUPDAMD0v7pHqlLNLAN83hEwJIScRA&s",
 
         ],
-        description:"",
+        description:"Classic Suits for Modern Men",
         addons:true,
-        more:[]
+        more:[
+            "https://m.media-amazon.com/images/S/aplus-media-library-service-media/358a8ad9-2118-4cf2-b96a-cd566c7f9445.__CR0,0,970,600_PT0_SX970_V1___.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYTn19tUI6OOXE6HgN4V9AS83c5q1NHEAWRQ&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrs4CO5ndmiatlPgegfoHqplOKSyztCGS6zw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIzGl0Z9YUDKQwQfYo9HwZ7MIIDHzAGWlCig&s"
+        ]
 
     },
     {
@@ -112,7 +132,9 @@ const randomimages=[
         description:"Level Up PC Performance With The New RTX 3090 24GB GDDR6X",
         addons:true,
         more:[
-            "https://cdn.neowin.com/news/images/uploaded/2020/08/1598860334_gainward-geforce-rtx-3090-gs-specs-1.jpg"
+            "https://cdn.neowin.com/news/images/uploaded/2020/08/1598860334_gainward-geforce-rtx-3090-gs-specs-1.jpg",
+           "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/03/nvidia-geforce-rtx-3090-ti-prices-specs-benchmarks-where-to-buy-featured.jpg",
+           "https://imageio.forbes.com/specials-images/imageserve/5f4e828c7101cbd9e1de396e/GeForce-RTX-3090-Specs/960x0.jpg?height=425&width=711&fit=bounds"
         ]
 
     },
@@ -129,9 +151,13 @@ const randomimages=[
             "https://www.volure.co.za/cdn/shop/products/Brazilian_Hair_Kinky_Curl_1.jpeg?v=1485769304",
 
         ],
-        description:"",
+        description:"Radiate Beauty with Brazilian Hair",
         addons:false,
-        more:[]
+        more:[
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdQv5Rmm0WUtn2cCEM07IRcWVY1SlghUyePQ&s",
+            "https://m.media-amazon.com/images/I/71MAboYnFmS._SL1000_.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUUO8DruCGhGtCWXdZmSMxPlG0CCWutkQv1g&s"
+        ]
 
     },
     {
@@ -147,9 +173,13 @@ const randomimages=[
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0J5XRZQ5DrTU0loJfsUz2hm_2WqJqJXiPpQ&s",
 
         ],
-        description:"",
+        description:"Shuffle, Play, Win: UNO Fun Begins!",
         addons:true,
-        more:[]
+        more:[
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9QAiVrQ-B94OuY8Fd8pnItvkeDuZK730dMQ&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE7AC24C0zU4NrTyYBR0TUeFu_zBEhDoD-tg&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxyWCpg1VShlIe152BMNz-BBEulaNe9xjMg&s"
+        ]
 
     },
     {
@@ -165,8 +195,12 @@ const randomimages=[
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkGJP59ugqmA8rCsjpMv4D_f2gncFFh8PX1w&s",
 
         ],
-        description:"",
-        more:[]
+        description:"Cool and Chic: Korean Summer Tops",
+        more:[
+            "https://i.ebayimg.com/images/g/lqQAAOSwgeVgxgbn/s-l500.webp",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROQV5YEIVFIp4Lty3JtbRmQxQ5lEWWDLNTVA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-sre1YwAzriV0_GVD_aFSnRlusTlwDskwjw&s"
+        ]
 
     },
     {
@@ -182,9 +216,14 @@ const randomimages=[
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnGo-vISfEMuBhnq0Dn3gxEnAncujs_llyMw&s",
 
         ],
-        description:"",
+        description:"Unleash the Speed: Triumph Daytona 675 Awaits!",
         addons:true,
-        more:[]
+        more:[
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRklepGMaRrRqMC92DZQvmVEKbZ02efp_JwPA&s",
+            "https://images.91wheels.com/assets/b_images/main/triumph/daytona-675/triumph-daytona-675-1590502485.png?width=420&q=60?w=420&q=60",
+            "https://ic.maxabout.us//misc/infographics//Triumph-Daytona-675R.jpg/thumb/650",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoZ1J0ye6YoKK8cId_w1gIuhfok12U7-_unA&s"
+        ]
 
     },
     {
@@ -199,9 +238,13 @@ const randomimages=[
             "https://pictures-ghana.jijistatic.net/11927099_img-20200903-081549-579_620x465.webp",
 
         ],
-        description:"",
+        description:"Unleash Your Best Look",
         addons:true,
-        more:[]
+        more:[
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSP0EQ8sWJzJaKRAuSD22SsJdQXYxYZuITeQ&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6yDwzdA4hrr6QAa7Zd-QeSLpZcZFz7-Lwig&s",
+            "https://m.media-amazon.com/images/S/aplus-media-library-service-media/e5682ea3-43e9-49b8-b899-14794040486a.__CR0,0,970,600_PT0_SX970_V1___.jpg"
+        ]
 
     },
     {
@@ -217,8 +260,12 @@ const randomimages=[
             "https://m.media-amazon.com/images/I/91QXoQWqI9L._AC_UY350_.jpg",
 
         ],
-        description:"",
-        more:[]
+        description:"Empower Your Workout",
+        more:[
+            "https://i5.walmartimages.com/asr/ffed7596-fedf-42a6-b2ee-6b6b2a8fec3e_1.5c82108cf6f2941895ed54ff03fad065.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShWfFrdt07XPHnV7t3C9qQmxR15CfY8svc3w&s",
+            "https://i5.walmartimages.com/asr/35d18440-6b9c-4831-8def-ae9b7997f83f.5af9c48c27bb1b72074e49c08e75c1b8.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF"
+        ]
 
     },
     /* {

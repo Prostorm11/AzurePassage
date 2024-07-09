@@ -9,6 +9,8 @@ import {
   ScrollView,
   Image,
   TouchableWithoutFeedback,
+  Modal,
+  SafeAreaView,
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -20,10 +22,12 @@ import randomimages from "../../api/randomimages";
 import TwoDimage from "./TwoDimage";
 import Menu from "./Menu";
 import Searchbutton from "./searchbutton";
+import ModalSignin from "../Account/ModalSignin";
 
 function Homescreen() {
   const [superImagesData, setSuperImagesData] = useState([]);
   const [femaleFashionData, setFemaleFashionData] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const Myimage = [
     require("@/assets/images/girlshoper.gif"),
@@ -63,6 +67,18 @@ function Homescreen() {
     setFemaleFashionData(generateProductData(Femalefashion));
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsModalVisible(true);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.View1Style}>
@@ -70,7 +86,6 @@ function Homescreen() {
         <Text style={{ color: "red", fontSize: 15, fontWeight: "bold" }}>
           GlamCart
         </Text>
-        
         <Searchbutton></Searchbutton>
         <EvilIcons name="bell" size={28} color="black" />
       </View>
@@ -122,6 +137,7 @@ function Homescreen() {
                   price={item.price}
                   sold={item.sold}
                   rate={item.rate}
+                  store="superdeals"
                 />
               ))}
             </ScrollView>
@@ -155,6 +171,7 @@ function Homescreen() {
                   price={item.price}
                   sold={item.sold}
                   rate={item.rate}
+                  store="viva"
                 />
               ))}
             </ScrollView>
@@ -172,11 +189,28 @@ function Homescreen() {
               id={item.id}
               description={item.description}
               more={item.more}
-
+              source={randomimages}
             />
           ))}
         </View>
       </ScrollView>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={closeModal}
+      >
+        <SafeAreaView style={styles.modalOverlay}>
+{/*           <View style={styles.modalContent}>
+            <Text>Hello</Text>
+            <Pressable onPress={closeModal} style={styles.closeButton}>
+              <Text style={styles.closeButtonText}>Close</Text>
+            </Pressable>
+          </View> */}
+          <ModalSignin toggle={closeModal}></ModalSignin>
+        </SafeAreaView>
+      </Modal>
     </View>
   );
 }
@@ -212,20 +246,28 @@ const styles = StyleSheet.create({
     marginTop: 10,
     gap: 7,
   },
-  modal: {
-    justifyContent: "flex-start",
-    margin: 0,
+  modalOverlay: {
+    flex: 1,
+    //justifyContent: "center",
+    //alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalContent: {
-    backgroundColor: "white",
+    width: 300,
     padding: 20,
+    backgroundColor: "white",
     borderRadius: 10,
-    width: "60%",
-    alignSelf: "flex-start",
+    alignItems: "center",
   },
-  menuItem: {
-    fontSize: 18,
+  closeButton: {
+    marginTop: 20,
     paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "red",
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: "white",
   },
 });
 

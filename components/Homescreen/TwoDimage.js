@@ -9,11 +9,11 @@ import { useNavigation } from "@react-navigation/native";
 
 
 
-function TwoDimage({image,nprice,sold,addons,title,id,description,more}) {
+function TwoDimage({image,nprice,sold,addons,title,id,description,more,source}) {
   const navigation=useNavigation();
   
   return (
-    <TouchableWithoutFeedback onPress={function(){navigation.navigate("productdetails",{identity:id,sold:sold,price:nprice,describe:description,more:more}); console.log(id)}}>
+    <TouchableWithoutFeedback onPress={function(){navigation.navigate("productdetails",{identity:id,sold:sold,price:nprice,describe:description,more:more,source:source}); console.log(id)}}>
       <View style={styles.View1style} onStartShouldSetResponder={() => true}>
        <View style={styles.View2style}>
         <Image source={{uri:image}} style={styles.imagestyle}></Image>
@@ -24,7 +24,7 @@ function TwoDimage({image,nprice,sold,addons,title,id,description,more}) {
           <Text style={{fontSize:18,fontWeight:"bold"}}>GHC {nprice}</Text>
           <Text style={{fontSize:12}}>{sold} sold</Text>
         </View>
-        {addons && <Scrollingmessage height={15} />}
+        {addons && <Scrollingmessage height={20} />}
 
       </View>
       

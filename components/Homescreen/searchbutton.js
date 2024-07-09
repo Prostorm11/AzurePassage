@@ -16,6 +16,8 @@ function Searchbutton() {
     function handlesearch(){
      if(text.trim()){ 
        navigation.push("searchresults",{query:text.trim()})
+       textchange("")
+       
      }
     }
   return (
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     gap: 10,
+    alignItems:"center"
   },
   Viewstyle:{
     flex:1,

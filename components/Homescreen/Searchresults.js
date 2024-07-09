@@ -18,6 +18,7 @@ function Searchresults({route}) {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const {query}=route.params;
+  
 
   useEffect(() => {
     const results = randomimages.filter(randomimages =>
@@ -29,7 +30,7 @@ function Searchresults({route}) {
   return (
     <View style={styles.View1style}>
     
-      <Searchtab></Searchtab>
+      <Searchtab ></Searchtab>
 
       <ScrollView showsHorizontalScrollIndicator={false}>
         <Text
@@ -47,6 +48,7 @@ function Searchresults({route}) {
               sold={item.sold}
               title={item.title}
               id={item.id}
+              more={item.more}
             />
           ))}
         </View>

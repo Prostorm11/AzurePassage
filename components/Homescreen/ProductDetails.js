@@ -11,6 +11,7 @@ import {
   Button,
 } from "react-native";
 import randomimages from "../../api/randomimages";
+import ListSuperdeals from "../../api/ListSuperdeals";
 import Searchtab from "./searchtab";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -21,6 +22,7 @@ function ProductDetails({ route }) {
   const { describe } = route.params;
   const { price } = route.params;
   const { more } = route.params;
+  const {source}=route.params
   return (
     <View style={styles.View1style}>
       <Searchtab></Searchtab>
@@ -28,8 +30,9 @@ function ProductDetails({ route }) {
         <ScrollView>
           <View style={styles.View2style}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              {randomimages[identity].carouselImages.map((item, key) => (
+              {source[identity].carouselImages.map((item,index) => (
                 <ImageBackground
+                  key={index}
                   style={styles.imagestyle}
                   source={{ uri: item }}
                 />
@@ -105,12 +108,18 @@ function ProductDetails({ route }) {
               <View
                 style={{
                   flexDirection: "row",
-                  justifyContent: "space-between",
+                  alignItems:"center",
+                  gap:5
                 }}
               >
                 <Text style={{ fontSize: 16, fontWeight: "bold" }}>
                   Choice Service
                 </Text>
+                <MaterialCommunityIcons
+                name="greater-than"
+                size={12}
+                color="black"
+              />
               </View>
               <Text>Buyer Protection</Text>
             </View>
@@ -119,8 +128,8 @@ function ProductDetails({ route }) {
             <Text style={{ fontSize: 18, fontWeight: "bold", margin: 15 }}>
               Item description
             </Text>
-            {more.map((item, key) => (
-              <View style={{ height: Dimensions.get("screen").height * 0.3 }}>
+            {more.map((item, index) => (
+              <View key={index}style={{ height: Dimensions.get("screen").height * 0.3 }}>
                 <Image source={{ uri: item }} style={styles.imagestyle} />
               </View>
             ))}
@@ -159,10 +168,11 @@ function ProductDetails({ route }) {
 const styles = StyleSheet.create({
   View1style: {
     flex: 1,
+    //height:Dimensions.get("window").height
   },
 
   View2style: {
-    height: Dimensions.get("screen").height * 0.5,
+    height: Dimensions.get("window").height * 0.5,
   },
   imagestyle: {
     height: "100%",
@@ -178,7 +188,7 @@ const styles = StyleSheet.create({
   staticview: {
     position: "absolute",
     width: "100%",
-    bottom: "3%",
+    bottom: 0,
     height: Dimensions.get("screen").height * 0.1,
     backgroundColor: "white",
     zIndex: 1,

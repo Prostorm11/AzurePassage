@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Pressable,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
@@ -18,7 +19,7 @@ function Menu() {
     console.log("selected item:", item);
   };
   return (
-    <View>
+    <SafeAreaView>
       <Pressable onPress={toggleMenu}>
         <Entypo name="menu" size={28} color="black" />
       </Pressable>
@@ -30,26 +31,41 @@ function Menu() {
       >
         <View style={styles.modalContent}>
           <TouchableWithoutFeedback onPress={() => handleMenuItemPress("Home")}>
-            <Text style={styles.menuItem}>Home</Text>
+            <Text style={styles.menuItem}>Electronics</Text>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
             onPress={() => handleMenuItemPress("Profile")}
           >
-            <Text style={styles.menuItem}>Profile</Text>
+            <Text style={styles.menuItem}>Apparel</Text>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
             onPress={() => handleMenuItemPress("Settings")}
           >
-            <Text style={styles.menuItem}>Settings</Text>
+            <Text style={styles.menuItem}>Jewelry</Text>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
-            onPress={() => handleMenuItemPress("Logout")}
+            onPress={() => handleMenuItemPress("Shoes")}
           >
-            <Text style={styles.menuItem}>Logout</Text>
+            <Text style={styles.menuItem}>Shoes</Text>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => handleMenuItemPress("Toys")}
+          >
+            <Text style={styles.menuItem}>Toys</Text>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => handleMenuItemPress("Tools")}
+          >
+            <Text style={styles.menuItem}>Tools</Text>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => handleMenuItemPress("Automotive")}
+          >
+            <Text style={styles.menuItem}>Automotive</Text>
           </TouchableWithoutFeedback>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({

@@ -1,17 +1,20 @@
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Button, Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import InputText from "./TextFields";
-import Buttons from "./Button";
+import InputText from "@/components/Account/TextFields";
+import Buttons from "@/components/Account/Button";
 import { NavigationContainer } from "@react-navigation/native";
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 
 
 export default function SignIn() {
+  const [email, setemail] = React.useState("");
+  const [password, setpassword] = React.useState("");
   return (
     <View style={styles.View1}>
       
-      <InputText></InputText>
+      <InputText placeholder="Type Email" value={email} setvalue={setemail}/>
+      <InputText placeholder="Type Password" value={password} setvalue={setpassword}/>
      
       <Buttons name="Login" />
       <Buttons name="Forgot Password?"/>
@@ -31,7 +34,9 @@ export default function SignIn() {
 
 const styles = StyleSheet.create({
   View1: {
-    backgroundColor:"white"
+    backgroundColor:"white",
+    height:"100%"
+    
   },
   View2: {
     marginTop: 20,
