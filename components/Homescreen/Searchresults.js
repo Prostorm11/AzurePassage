@@ -48,7 +48,9 @@ function Searchresults({route}) {
               sold={item.sold}
               title={item.title}
               id={item.id}
+              description={item.description}
               more={item.more}
+              source={randomimages}
             />
           ))}
         </View>

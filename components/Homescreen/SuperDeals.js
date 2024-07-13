@@ -70,7 +70,7 @@ function SuperDeals(props) {
                   navigation.push("productdetails", {
                     identity: item.id,
                     describe: item.description,
-                    price: item.price,
+                    price: item.newprice,
                     more: item.more,
                     source: ListSuperdeals,
                   })
@@ -93,7 +93,7 @@ function SuperDeals(props) {
                     <Text style={{ marginVertical: 3 ,fontSize:16,fontWeight:"bold"}}>{item.title}</Text>
                     <View style={styles.priceContainer}>
                       <View>
-                        <Text style={{ fontSize: 17 }}>GHS {item.price}</Text>
+                        <Text style={{ fontSize: 17 }}>GHS {item.newprice}</Text>
                         <Text style={{color:"red"}}>{item.discount} off</Text>
                       </View>
                       <Image

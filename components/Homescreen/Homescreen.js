@@ -23,11 +23,13 @@ import TwoDimage from "./TwoDimage";
 import Menu from "./Menu";
 import Searchbutton from "./searchbutton";
 import ModalSignin from "../Account/ModalSignin";
+import { auth } from "../../firebaseConfig";
 
 function Homescreen() {
   const [superImagesData, setSuperImagesData] = useState([]);
   const [femaleFashionData, setFemaleFashionData] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const currentUser=auth.currentUser
 
   const Myimage = [
     require("@/assets/images/girlshoper.gif"),
@@ -37,6 +39,7 @@ function Homescreen() {
   const scrollViewRef = useRef(null);
   const { width } = Dimensions.get("window");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -68,12 +71,20 @@ function Homescreen() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsModalVisible(true);
-    }, 10000);
+    if (currentUser) {
+      setIsModalVisible(false);
+    } else {
+      timeoutRef.current = setTimeout(() => {
+        setIsModalVisible(true);
+      }, 10000);
+    }
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [currentUser]);
 
   const closeModal = () => {
     setIsModalVisible(false);
@@ -202,12 +213,7 @@ function Homescreen() {
         onRequestClose={closeModal}
       >
         <SafeAreaView style={styles.modalOverlay}>
-{/*           <View style={styles.modalContent}>
-            <Text>Hello</Text>
-            <Pressable onPress={closeModal} style={styles.closeButton}>
-              <Text style={styles.closeButtonText}>Close</Text>
-            </Pressable>
-          </View> */}
+
           <ModalSignin toggle={closeModal}></ModalSignin>
         </SafeAreaView>
       </Modal>

@@ -1,41 +1,50 @@
-import { Image, StyleSheet, Platform, SafeAreaView ,Dimensions,StatusBar,Text, View} from 'react-native';
-import SignIn from './SIGNIN/SignIn';
+import {
+  Image,
+  StyleSheet,
+  Platform,
+  SafeAreaView,
+  Dimensions,
+  StatusBar,
+  Text,
+  View,
+} from "react-native";
+import SignIn from "./SIGNIN/SignIn";
 import React from "react";
-import {NavigationContainer,useNavigation} from '@react-navigation/native';
-import Signinupnavigate from '@/components/navigation/signinupnavigate';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import SignUp from "@/components/Account/SIGNUP/SignUp"
-import Logo from '@/components/Account/Logo';
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import Signinupnavigate from "@/components/navigation/signinupnavigate";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import SignUp from "@/components/Account/SIGNUP/SignUp";
+import Logo from "@/components/Account/Logo";
 
 const Stack = createNativeStackNavigator();
-
+export const action=()=>{};
 export default function Account() {
-  
   return (
     <SafeAreaView style={styles.SafeAreaViewStyle}>
-       
-       <Logo/>
-       <NavigationContainer independent={true}>
+    {action()}
+      <Logo />
 
-       <Signinupnavigate/>
-        <Stack.Navigator screenOptions={{}}  >
-          <Stack.Screen name='Signin' component={SignIn} options={{ headerShown:false}}/>
-          <Stack.Screen name="Signup" component={SignUp} options={{headerShown:false}}/>
-        </Stack.Navigator>
-       </NavigationContainer>
-      
-    
-      
+      <Signinupnavigate />
+      <Stack.Navigator screenOptions={{}}>
+        <Stack.Screen
+          name="Signin"
+          component={SignIn}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={SignUp}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   SafeAreaViewStyle: {
-    flex:1,
+    flex: 1,
     backgroundColor: "white",
-   // width:Dimensions.get("screen").width
-    
+    // width:Dimensions.get("screen").width
   },
-  
 });
