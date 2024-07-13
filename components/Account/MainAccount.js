@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Dimensions,
   Pressable,
@@ -27,11 +27,23 @@ import Wishlisit_history from "../navigation/wishlisit_history";
 import Modal from "react-native-modal";
 import Cart from "../MyCart/Cart";
 import ModalSignin from "./ModalSignin";
+import { auth } from "../../firebaseConfig";
+import { UserContext } from "../../Usercontext";
 
 const Stack = createNativeStackNavigator();
 
 function MainAccount(props) {
   const [isModalVisible, setModalVisible] = useState(false);
+  const currentUser = auth.currentUser;
+  const { userProfile, loading } = useContext(UserContext);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (userProfile) {
+      setName(userProfile.name);
+    }
+  }, [userProfile]);
+
   const toggleMenu = () => {
     setModalVisible(!isModalVisible);
   };
@@ -40,20 +52,35 @@ function MainAccount(props) {
   return (
     <View style={styles.View1style}>
       <View style={styles.View2style}>
-        <Pressable onPress={() => toggleMenu()}>
-          <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-            Sign in or register
-          </Text>
+          {currentUser ? (
+        <Pressable onPress={() =>console.log("Hello")}>
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>{name}</Text>
         </Pressable>
+          ) : (
+            <Pressable onPress={() => toggleMenu()}>
+
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+              Sign in or register
+            </Text>
+            </Pressable>
+          )}
 
         <View style={{ flexDirection: "row", gap: 5 }}>
           <Pressable
             style={{ width: 40 }}
-            onPress={() => console.log("Settings")}
+            onPress={() => {
+              navigation.navigate("settings");
+            }}
           >
             <AntDesign name="setting" size={24} color="black" />
           </Pressable>
-          <Pressable style={{ width: 40 }} onPress={() => console.log("Alert")}>
+          <Pressable
+            style={{ width: 40 }}
+            onPress={() => {
+              console.log("Alert");
+              navigation.navigate("details");
+            }}
+          >
             <EvilIcons name="bell" size={28} color="black" />
           </Pressable>
         </View>
@@ -133,9 +160,7 @@ function MainAccount(props) {
           </View>
         </View>
         <View style={styles.View3style}>
-          <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-            Entertainment
-          </Text>
+          <Text style={{ fontSize: 14, fontWeight: "bold" }}>Entertainment</Text>
           <View
             style={{
               flexDirection: "row",
@@ -145,7 +170,11 @@ function MainAccount(props) {
             }}
           >
             <Pressable style={{ width: 50, alignItems: "center" }}>
-              <SimpleLineIcons name="game-controller" size={30} color="black" />
+              <SimpleLineIcons
+                name="game-controller"
+                size={30}
+                color="black"
+              />
               <Text style={{ fontSize: 12 }}>The Play</Text>
             </Pressable>
             <Pressable style={{ width: 55, alignItems: "center" }}>
@@ -238,8 +267,8 @@ const styles = StyleSheet.create({
   safeAreaViewStyle: {
     flex: 1,
     backgroundColor: "white",
-   // justifyContent: "center",
-   // alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
 });
 

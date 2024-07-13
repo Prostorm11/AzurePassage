@@ -1,22 +1,51 @@
-import { Button, Dimensions, Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { Alert, Button, Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
 import InputText from "@/components/Account/TextFields";
 import Buttons from "@/components/Account/Button";
-import { NavigationContainer } from "@react-navigation/native";
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {firestore,auth} from "@/firebaseConfig"
+import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
+
 
 
 
 export default function SignIn() {
   const [email, setemail] = React.useState("");
   const [password, setpassword] = React.useState("");
+  const navigation=useNavigation();
+  const [document,setdocument]=useState(null);
+  
+ async function Login(){
+
+   try{
+      
+       const userCredential=await signInWithEmailAndPassword(auth,email,password);
+       const userId=userCredential.user.uid
+      Alert.alert("Success");
+      navigation.navigate("bottomnavigator")
+
+
+
+    
+     
+   } 
+   catch (e){
+    Alert.alert(`failed ${e}`)
+    navigation.navigate("user")
+    
+   }
+ }
+ 
+
+
+ 
   return (
     <View style={styles.View1}>
       
       <InputText placeholder="Type Email" value={email} setvalue={setemail}/>
       <InputText placeholder="Type Password" value={password} setvalue={setpassword}/>
-     
-      <Buttons name="Login" />
+
+      <Buttons name="Login" operation={Login} />
       <Buttons name="Forgot Password?"/>
       
       <View style={styles.View2}>
@@ -31,6 +60,7 @@ export default function SignIn() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   View1: {

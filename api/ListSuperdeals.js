@@ -4,7 +4,7 @@ const ListSuperdeals=[
     {
         image:"https://t4.ftcdn.net/jpg/01/83/56/79/360_F_183567902_LN7u7K73NbnOYTfiDsgcm2ryYkDmRCkc.jpg",
         title:"Powerful Chargers",
-        price:180,
+        newprice:180,
         carouselImages:[
             "https://t4.ftcdn.net/jpg/01/83/56/79/360_F_183567902_LN7u7K73NbnOYTfiDsgcm2ryYkDmRCkc.jpg",
             "https://m.media-amazon.com/images/I/6185GvHgd+L._AC_UF1000,1000_QL80_.jpg",
@@ -24,7 +24,7 @@ const ListSuperdeals=[
     {
         image:"https://i.ebayimg.com/images/g/1MoAAOSwZr9jhsCF/s-l1600.jpg",
         title:"Stylus for screens",
-        price:77,
+        newprice:77,
         carouselImages:[
             "https://i.ebayimg.com/images/g/1MoAAOSwZr9jhsCF/s-l1600.jpg",
             "https://telefonika.com/wp-content/uploads/2021/02/41rdKdHeiL._AC_SL1080_.jpg",
@@ -45,7 +45,7 @@ const ListSuperdeals=[
     {
         image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBKW4JqtkRtuSwak2aWHhTIQCxK95qNV1RvQ&s",
         title:"Eyelashes glue",
-        price:77,
+        newprice:77,
         carouselImages:[
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBKW4JqtkRtuSwak2aWHhTIQCxK95qNV1RvQ&s",
             "https://rukminim2.flixcart.com/image/850/1000/jhi0l8w0/eyelash-adhesive/k/f/v/eyelashes-glue-or-eye-original-imaf5ggfpn5vd7au.jpeg?q=90&crop=false",
@@ -65,7 +65,7 @@ const ListSuperdeals=[
     {
         image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJyl3HIz1fHx68YsdchJkpyfZD1HMj24ocQw&s",
         title:"Brazuca Ball",
-        price:540.75,
+        newprice:540.75,
         carouselImages:[
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJyl3HIz1fHx68YsdchJkpyfZD1HMj24ocQw&s",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrkzcOFGax5Eth_vNKb0KgCkkrPBnSH4pj7g&s",
@@ -84,7 +84,7 @@ const ListSuperdeals=[
     {
         image:"https://sneakerbardetroit.com/wp-content/uploads/2023/04/Air-Jordan-14-Laney-487471-407-4.jpg",
         title:"Jordan 14 Sneakers",
-        price:77,
+        newprice:77,
         carouselImages:[
             "https://sneakerbardetroit.com/wp-content/uploads/2023/04/Air-Jordan-14-Laney-487471-407-4.jpg",
             "https://cdn.sanity.io/images/d6wcctii/production/e264acbfa8e8fcff49b29d518b09edf5b1f7d613-1070x760.jpg",

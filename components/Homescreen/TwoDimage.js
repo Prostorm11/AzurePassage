@@ -3,6 +3,7 @@ import { Dimensions, Image, Pressable, StyleSheet, Text, TouchableWithoutFeedbac
 import randomimages from "../../api/randomimages";
 import Scrollingmessage from "./scrollingmessage";
 import { useNavigation } from "@react-navigation/native";
+import { auth } from "../../firebaseConfig";
 
 
 
@@ -12,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 function TwoDimage({image,nprice,sold,addons,title,id,description,more,source}) {
   const navigation=useNavigation();
   
+
   return (
     <TouchableWithoutFeedback onPress={function(){navigation.navigate("productdetails",{identity:id,sold:sold,price:nprice,describe:description,more:more,source:source}); console.log(id)}}>
       <View style={styles.View1style} onStartShouldSetResponder={() => true}>

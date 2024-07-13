@@ -2,9 +2,10 @@ import React from "react";
 import { View, StyleSheet, Text, Dimensions, Alert, KeyboardAvoidingView, ScrollView,Platform } from "react-native";
 import InputText from "@/components/Account/TextFields";
 import Buttons from "@/components/Account/Button";
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { app, firestore } from "@/firebaseConfig";
+import { firestore,auth } from "@/firebaseConfig";
+
 
 function SignUp() {
   const [number, setNumber] = React.useState("");
@@ -12,12 +13,15 @@ function SignUp() {
   const [password, setPassword] = React.useState("");
   const [name, setName] = React.useState("");
   const [country, setCountry] = React.useState("");
+ 
 
   async function CreateAccount() {
     try {
-      const auth = getAuth(app);
+     
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth,email,password);
       const userId = userCredential.user.uid;
+     
 
       await setDoc(doc(firestore, 'Profiles', userId), {
         userId: userId,
@@ -31,6 +35,7 @@ function SignUp() {
       });
 
       Alert.alert("Success");
+      
     } catch (e) {
       Alert.alert(`Something Went Wrong: ${e.message}`);
     }
