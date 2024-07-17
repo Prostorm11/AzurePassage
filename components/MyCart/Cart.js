@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   Modal,
   Button,
+  Pressable,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -22,6 +23,7 @@ const CartScreen = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { userProfile, loading } = useContext(UserContext);
+ 
 
   const deleteItem = async () => {
     try {
@@ -39,11 +41,15 @@ const CartScreen = () => {
     }
   };
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }) => {
+    const Product_identity = cartItems.find((obj) => obj.id == item.id);
+    return(
+    <Pressable onPress={()=>navigation.navigate("productdetails",{identity:Product_identity.id,sold:Product_identity.sold,price:Product_identity.newprice,describe:Product_identity.description,more:Product_identity.more,source:cartItems})}>
+    
     <View style={styles.itemContainer}>
       <Image source={{ uri: item.image }} style={styles.itemImage} />
       <View style={{ justifyContent: "space-around", flex: 1 }}>
-        <Text style={styles.itemName}>{item.title}</Text>
+        <Text style={styles.itemName} numberOfLines={2}>{item.title}</Text>
         <Text style={styles.itemPrice}><Text>Ghc</Text>{item.newprice}</Text>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <Text>Free Shipping</Text>
@@ -59,7 +65,9 @@ const CartScreen = () => {
         </View>
       </View>
     </View>
+    </Pressable>
   );
+}
 
   if (loading) {
     return (
@@ -70,6 +78,7 @@ const CartScreen = () => {
   }
 
   const cartItems = userProfile ? userProfile.cart : [];
+  
 
   return (
     <SafeAreaView style={styles.container}>

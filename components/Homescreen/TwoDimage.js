@@ -15,13 +15,13 @@ function TwoDimage({image,nprice,sold,addons,title,id,description,more,source}) 
   
 
   return (
-    <TouchableWithoutFeedback onPress={function(){navigation.navigate("productdetails",{identity:id,sold:sold,price:nprice,describe:description,more:more,source:source}); console.log(id)}}>
+    <TouchableWithoutFeedback onPress={function(){navigation.navigate("productdetails",{identity:id,sold:sold,price:nprice,describe:description,more:more,source:source})}}>
       <View style={styles.View1style} onStartShouldSetResponder={() => true}>
        <View style={styles.View2style}>
         <Image source={{uri:image}} style={styles.imagestyle}></Image>
       </View>
       <View style={styles.View3style}>
-        <Text>{title}</Text>
+        <Text numberOfLines={1}>{title}</Text>
         <View style={{ flexDirection: "row", gap: 10 ,alignItems:"center"}}>
           <Text style={{fontSize:18,fontWeight:"bold"}}>GHC {nprice}</Text>
           <Text style={{fontSize:12}}>{sold} sold</Text>

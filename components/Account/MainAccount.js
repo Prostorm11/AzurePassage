@@ -53,8 +53,11 @@ function MainAccount(props) {
     <View style={styles.View1style}>
       <View style={styles.View2style}>
           {currentUser ? (
-        <Pressable onPress={() =>console.log("Hello")}>
-            <Text style={{ fontSize: 16, fontWeight: "bold" }}>{name}</Text>
+        <Pressable onPress={() =>console.log("Hello")} style={{flexDirection:"row",gap:7,justifyContent:"center",alignItems:"center"}}>
+           <View style={{borderWidth:1,borderRadius:20,width:30,height:30,justifyContent:"center",alignItems:"center",backgroundColor:"#FF3500"}}>
+            <Text style={{ fontSize: 16, fontWeight: "bold"}}>{name[0]}</Text>
+           </View>
+            <Text style={{ fontSize: 16, fontWeight: "bold"}}>{name}</Text>
         </Pressable>
           ) : (
             <Pressable onPress={() => toggleMenu()}>
@@ -256,7 +259,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get("screen").height * 0.16,
     width: "100%",
     backgroundColor: "white",
-    marginBottom: 6,
+    marginBottom: 10,
     padding: 10,
     gap: 10,
   },
