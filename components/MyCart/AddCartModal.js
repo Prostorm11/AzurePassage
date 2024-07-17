@@ -56,7 +56,7 @@ function AddCartModal({ Mimage, isModalVisible, handlemodal, price, addtocart, s
                 </View>
               </Pressable>
             </View>
-            <Pressable style={styles.Pressablestyle} onPress={()=>addtocart(source,quantity)}>
+            <Pressable style={styles.Pressablestyle} onPress={()=>{addtocart(source,quantity);console.log(source)}}>
               <Text style={{ fontSize: 16, fontWeight: "bold" }}>Continue</Text>
             </Pressable>
           </View>

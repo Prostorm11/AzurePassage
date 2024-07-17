@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import {
   Dimensions,
   Pressable,
@@ -24,11 +24,14 @@ import Menu from "./Menu";
 import Searchbutton from "./searchbutton";
 import ModalSignin from "../Account/ModalSignin";
 import { auth } from "../../firebaseConfig";
+import { UserContext } from "../../Usercontext";
 
 function Homescreen() {
   const [superImagesData, setSuperImagesData] = useState([]);
   const [femaleFashionData, setFemaleFashionData] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const { userProfile, loading,productsData,Firestoreproducts } = useContext(UserContext);
+  const [more,setmore]=useState([]);
   const currentUser=auth.currentUser
 
   const Myimage = [
@@ -41,6 +44,21 @@ function Homescreen() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timeoutRef = useRef(null);
 
+ /*  useEffect(()=>{
+    const images=[];
+    productsData.variant[0].options.map((item,index)=>(
+        images.push(item.image)
+    ))
+    setmore(images)
+  },[]) */
+
+ /*  useEffect(() => {
+    if (productsData && productsData.length > 0) {
+      const images = productsData.map((item) => item.variant[0].options.map(option => option.image)).flat();
+      setmore(images);
+    }
+  }, [productsData]);
+ */
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (scrollViewRef.current) {
@@ -89,7 +107,7 @@ function Homescreen() {
   const closeModal = () => {
     setIsModalVisible(false);
   };
-
+ //console.log(more)
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.View1Style}>
@@ -203,6 +221,20 @@ function Homescreen() {
               source={randomimages}
             />
           ))}
+          {Firestoreproducts.map((item, key) => (
+            <TwoDimage
+              key={key}
+              image={item.image}
+              addons={item.addons}
+              nprice={item.newprice}
+              sold={item.sold}
+              title={item.title}
+              id={item.id}
+              description={item.description}
+              more={item.more}
+              source={Firestoreproducts}
+            />
+          ))}
         </View>
       </ScrollView>
 
@@ -250,6 +282,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     marginTop: 10,
+    marginHorizontal:10,
     gap: 7,
   },
   modalOverlay: {

@@ -11,7 +11,11 @@ import {
   Alert,
 } from "react-native";
 import Searchtab from "./searchtab";
-import { AntDesign, MaterialCommunityIcons, EvilIcons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  MaterialCommunityIcons,
+  EvilIcons,
+} from "@expo/vector-icons";
 import { auth, firestore } from "../../firebaseConfig";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import AddCartModal from "../MyCart/AddCartModal";
@@ -21,48 +25,60 @@ function ProductDetails({ route }) {
   const { identity, describe, price, more, source } = route.params;
   const [add, setAdd] = useState(false);
   const [showalert, setshowalert] = useState(false);
-  const {userProfile,loading}=useContext(UserContext)
+  const { userProfile, loading,Firestoreproducts } = useContext(UserContext);
 
-  
   const ShowAlert = () => {
     setshowalert(true);
-    setTimeout(() => { setshowalert(false); }, 2000);
+    setTimeout(() => {
+      setshowalert(false);
+    }, 2000);
   };
 
   const cartpop = () => {
     setAdd(!add);
   };
 
-  async function addtocart(newItem,amount) {
+  async function addtocart(newItem, amount) {
     try {
       const currentUser = auth.currentUser;
-      if(currentUser){
-
-        const userRef = doc(firestore, 'Profiles', currentUser.uid);
+      if (currentUser) {
+        const userRef = doc(firestore, "Profiles", currentUser.uid);
         await updateDoc(userRef, {
-          cart: arrayUnion({ ...newItem, amount }) // Add amount to the item object
+          cart: arrayUnion({ ...newItem, amount }), // Add amount to the item object
         });
         ShowAlert();
-        cartpop()
-      }else{
-        Alert.alert("Login First")
+        cartpop();
+      } else {
+        Alert.alert("Login First");
       }
     } catch (error) {
-
-      Alert.alert("Error", "Failed to add item to cart.");
+      Alert.alert("Error", `${error}`);
+      console.log("Error", `${error}`);
     }
   }
 
   return (
     <View style={styles.viewContainer}>
-      <AddCartModal isModalVisible={add} handlemodal={cartpop} Mimage={source[identity].image} price={price} addtocart={addtocart} source={source[identity]} clearmodal={showalert} />
+      <AddCartModal
+        isModalVisible={add}
+        handlemodal={cartpop}
+        Mimage={source[identity].image}
+        price={price}
+        addtocart={addtocart}
+        source={source.find((obj) => obj.id == identity)}
+        clearmodal={showalert}
+      />
       <Searchtab />
       <View style={styles.scrollViewContainer}>
         <ScrollView>
           <View style={styles.carouselContainer}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              {source[identity].carouselImages.map((item, index) => (
-                <ImageBackground key={index} style={styles.imageStyle} source={{ uri: item }} />
+              {source.find((obj)=>obj.id==identity).carouselImages.map((item, index) => (
+                <ImageBackground
+                  key={index}
+                  style={styles.imageStyle}
+                  source={{ uri: item }}
+                />
               ))}
             </ScrollView>
           </View>
@@ -71,14 +87,20 @@ function ProductDetails({ route }) {
               <Text style={styles.pricePrefix}>GHS</Text>
               <Text style={styles.priceValue}>{price}</Text>
               {"\n"}
-              <Text style={styles.priceInfo}>Price shown before tax| Extra 5% off with coins</Text>
+              <Text style={styles.priceInfo}>
+                Price shown before tax| Extra 5% off with coins
+              </Text>
             </Text>
             <Text style={styles.descriptionText}>{describe}</Text>
           </View>
           <Pressable onPress={() => console.log("Hello")}>
             <View style={styles.specificationsContainer}>
               <Text style={styles.specificationsText}>Specifications</Text>
-              <MaterialCommunityIcons name="greater-than" size={10} color="black" />
+              <MaterialCommunityIcons
+                name="greater-than"
+                size={10}
+                color="black"
+              />
             </View>
           </Pressable>
           <Pressable onPress={() => console.log("Hello")}>
@@ -86,7 +108,11 @@ function ProductDetails({ route }) {
               <View style={styles.deliveryRow}>
                 <View style={styles.deliveryInfo}>
                   <Text style={styles.deliveryText}>Delivery</Text>
-                  <MaterialCommunityIcons name="greater-than" size={12} color="black" />
+                  <MaterialCommunityIcons
+                    name="greater-than"
+                    size={12}
+                    color="black"
+                  />
                 </View>
                 <View style={styles.locationInfo}>
                   <EvilIcons name="location" size={24} color="black" />
@@ -104,7 +130,11 @@ function ProductDetails({ route }) {
             <View style={styles.choiceServiceContainer}>
               <View style={styles.choiceServiceInfo}>
                 <Text style={styles.choiceServiceText}>Choice Service</Text>
-                <MaterialCommunityIcons name="greater-than" size={12} color="black" />
+                <MaterialCommunityIcons
+                  name="greater-than"
+                  size={12}
+                  color="black"
+                />
               </View>
               <Text>Buyer Protection</Text>
             </View>
@@ -121,7 +151,10 @@ function ProductDetails({ route }) {
       </View>
       <View style={styles.staticView}>
         <View>
-          <Pressable style={styles.messageButton} onPress={() => console.log("Pressed")}>
+          <Pressable
+            style={styles.messageButton}
+            onPress={() => console.log("Pressed")}
+          >
             <AntDesign name="message1" size={24} color="black" />
             <Text style={styles.messageText}>Message</Text>
           </Pressable>
@@ -130,16 +163,19 @@ function ProductDetails({ route }) {
           <Pressable style={styles.addButton} onPress={cartpop}>
             <Text style={styles.addButtonText}>Add to cart</Text>
           </Pressable>
-          <Pressable style={[styles.addButton, styles.buyNowButton]} onPress={() => console.log("Pressed")}>
+          <Pressable
+            style={[styles.addButton, styles.buyNowButton]}
+            onPress={() => console.log("Pressed")}
+          >
             <Text style={styles.addButtonText}>Buy now</Text>
           </Pressable>
         </View>
       </View>
       {showalert && (
-          <View style={styles.snackbar}>
-            <Text style={styles.snackbarText}>Item added to cart!</Text>
-          </View>
-        )}
+        <View style={styles.snackbar}>
+          <Text style={styles.snackbarText}>Item added to cart!</Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -302,14 +338,14 @@ const styles = StyleSheet.create({
     bottom: "30%",
     //left: 0,
     //right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
     padding: 10,
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
     marginHorizontal: 20,
-    width:200,
-    alignSelf:"center"
+    width: 200,
+    alignSelf: "center",
   },
   snackbarText: {
     color: "white",
