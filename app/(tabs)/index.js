@@ -29,6 +29,7 @@ import NotificationScreen from "../../components/Account/Mysettings/Notification
 import ProfileScreen from "../../components/Account/Mysettings/ProfileScreen";
 import RateAliExpressScreen from "../../components/Account/Mysettings/RateAliExpressScreen";
 import ViewedScreen from "../../components/Account/Mysettings/ViewedScreen";
+import FullScreenVideoPlayer from "../../components/Feed/Videoplayer";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -62,6 +63,7 @@ export default function App() {
           <Stack.Screen name="rate" component={RateAliExpressScreen} options={{ headerShown: false }} />
           <Stack.Screen name="viewed" component={ViewedScreen} options={{ headerShown: false }} />
           <Stack.Screen name="language" component={LanguageSelectionScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="videoplayer" component={FullScreenVideoPlayer} options={{ headerShown: false }} />
          
           
         </Stack.Navigator>
