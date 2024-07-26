@@ -62,7 +62,7 @@ function ProductDetails({ route }) {
       <AddCartModal
         isModalVisible={add}
         handlemodal={cartpop}
-        Mimage={source[identity].image}
+        Mimage={source.find((obj) => obj.id == identity).image}
         price={price}
         addtocart={addtocart}
         source={source.find((obj) => obj.id == identity)}
