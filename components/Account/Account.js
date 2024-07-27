@@ -1,6 +1,7 @@
 import {
   Image,
   StyleSheet,
+  KeyboardAvoidingView,
   Platform,
   SafeAreaView,
   Dimensions,
@@ -17,12 +18,23 @@ import SignUp from "@/components/Account/SIGNUP/SignUp";
 import Logo from "@/components/Account/Logo";
 
 const Stack = createNativeStackNavigator();
-export const action=()=>{};
 export default function Account() {
   return (
-    <SafeAreaView style={styles.SafeAreaViewStyle}>
-    {action()}
-      <Logo />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.SafeAreaViewStyle}
+    >
+      {/* <Logo /> */}
+      <Image
+        source={require("@/assets/images/smalllogo.png")}
+        style={{
+          width: "60%",
+          height: "20%",
+          alignContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+        }}
+      />
 
       <Signinupnavigate />
       <Stack.Navigator screenOptions={{}}>
@@ -37,14 +49,14 @@ export default function Account() {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   SafeAreaViewStyle: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#ffff",
     // width:Dimensions.get("screen").width
   },
 });

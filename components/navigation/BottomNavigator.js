@@ -7,11 +7,10 @@ import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
-import Feed from "../Feed/Feed";
+import Feed from "../Feed/feed";
 import MainAccount from "../Account/MainAccount";
-
 
 function BottomNavigator() {
   //const stack = createNativeStackNavigator();
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
       ),
   },
   MyKart: {
-    tabBarLabel: "Kart",
+    tabBarLabel: "Cart",
     headerShown: false,
     tabBarIcon: ({ focused }) =>
       focused ? (
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
         <AntDesign name="shoppingcart" size={24} color="black" />
       ),
   },
-  feedstyle:{
+  feedstyle: {
     tabBarLabel: "Feed",
     headerShown: false,
     tabBarIcon: ({ focused }) =>
@@ -100,6 +99,6 @@ const styles = StyleSheet.create({
       ) : (
         <FontAwesome name="feed" size={24} color="black" />
       ),
-  }
+  },
 });
 export default BottomNavigator;
