@@ -53,7 +53,7 @@ function MainAccount(props) {
     <View style={styles.View1style}>
       <View style={styles.View2style}>
           {currentUser ? (
-        <Pressable onPress={() =>console.log("Hello")} style={{flexDirection:"row",gap:7,justifyContent:"center",alignItems:"center"}}>
+        <Pressable onPress={() =>navigation.navigate("mainprofile")} style={{flexDirection:"row",gap:7,justifyContent:"center",alignItems:"center"}}>
            <View style={{borderWidth:1,borderRadius:20,width:30,height:30,justifyContent:"center",alignItems:"center",backgroundColor:"#FF3500"}}>
             <Text style={{ fontSize: 16, fontWeight: "bold"}}>{name[0]}</Text>
            </View>

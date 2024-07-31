@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Dimensions,
   Pressable,
@@ -12,25 +12,35 @@ import { useNavigation } from "@react-navigation/native";
 import TwoDimage from "./TwoDimage";
 import randomimages from "../../api/randomimages";
 import Searchtab from "./searchtab";
+import { UserContext } from "../../Usercontext";
 
-function Searchresults({route}) {
-  
+function Searchresults({ route }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [isFromFirestore, setIsFromFirestore] = useState(null);
 
-  const {query}=route.params;
-  
+  const { query } = route.params;
+  const { userProfile, loading, productsData, Firestoreproducts, language } = useContext(UserContext);
 
   useEffect(() => {
-    const results = randomimages.filter(randomimages =>
-      randomimages.title.toLowerCase().includes(query.toLowerCase())
+    const firestoreResults = Firestoreproducts.filter(product =>
+      product.title.toLowerCase().includes(query.toLowerCase())
     );
-    setFilteredProducts(results);
-  }, [query]);
+
+    if (firestoreResults.length > 0) {
+      setIsFromFirestore(true);
+      setFilteredProducts(firestoreResults);
+    } else {
+      const randomImagesResults = randomimages.filter(image =>
+        image.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setIsFromFirestore(false);
+      setFilteredProducts(randomImagesResults);
+    }
+  }, [query, Firestoreproducts, randomimages]);
 
   return (
     <View style={styles.View1style}>
-    
-      <Searchtab ></Searchtab>
+      <Searchtab />
 
       <ScrollView showsHorizontalScrollIndicator={false}>
         <Text
@@ -50,7 +60,7 @@ function Searchresults({route}) {
               id={item.id}
               description={item.description}
               more={item.more}
-              source={randomimages}
+              source={isFromFirestore ? Firestoreproducts : randomimages}
             />
           ))}
         </View>
@@ -58,10 +68,11 @@ function Searchresults({route}) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   View1style: {
-    //backgroundColor: "red",
     flex: 1,
   },
 });
+
 export default Searchresults;

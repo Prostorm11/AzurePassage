@@ -68,7 +68,7 @@ export const UserProvider = ({ children }) => {
 
 import React, { createContext, useState, useEffect } from 'react';
 import { auth, firestore } from './firebaseConfig';
-import { doc, getDocs, collection, onSnapshot } from 'firebase/firestore';
+import { doc, getDocs, collection, onSnapshot, setDoc } from 'firebase/firestore';
 
 export const UserContext = createContext();
 
@@ -116,6 +116,19 @@ export const UserProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
+  /* useEffect(async ()=>{
+    productsData.map(async(item)=>(
+      await setDoc(doc(firestore, 'Product-Details', item.id), {
+       id: item.id,
+      name: item.name,
+      currentPrice: item.price,
+      priceHistory:[]
+      
+      })
+    ))
+
+  },[])  */
+
   useEffect(() => {
     if (productsData.length > 0) {
       const productsArray = productsData.map((item) => ({
@@ -135,6 +148,8 @@ export const UserProvider = ({ children }) => {
       setFirestoreProducts(productsArray);
     }
   }, [productsData]);
+
+
 
   return (
     <UserContext.Provider value={{ userProfile, loading, productsData, Firestoreproducts,language }}>
