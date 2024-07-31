@@ -22,7 +22,7 @@ import { Video, ResizeMode } from "expo-av";
 import { useNavigation } from "@react-navigation/native";
 
 
-const VideoFeed = () => {
+const Feed = () => {
   const [videos, setvideos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [lastDoc, setLastDoc] = useState(null);
@@ -168,7 +168,7 @@ const VideoFeed = () => {
   );
 };
 
-export default VideoFeed;
+export default Feed;
 
 const styles = StyleSheet.create({
   loadingIndicator: {
