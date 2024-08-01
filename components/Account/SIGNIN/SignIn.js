@@ -42,7 +42,7 @@ export default function SignIn() {
 
   return (
     <KeyboardAvoidingView
-     // behavior={Platform.OS === "ios" ? "padding" : "height"}
+     behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.View1}
     >
       <InputText placeholder="Type Email" value={email} setvalue={setemail} />

@@ -5,6 +5,7 @@ import Buttons from "@/components/Account/Button";
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { firestore,auth } from "@/firebaseConfig";
+import { useNavigation } from "@react-navigation/native";
 
 
 function SignUp() {
@@ -13,6 +14,7 @@ function SignUp() {
   const [password, setPassword] = React.useState("");
   const [name, setName] = React.useState("");
   const [country, setCountry] = React.useState("");
+  const navigation=useNavigation()
 
   const primarycolor = "#A51910";
 
@@ -24,6 +26,7 @@ function SignUp() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await signInWithEmailAndPassword(auth,email,password);
       const userId = userCredential.user.uid;
+      navigation.navigate("bottomnavigator");
      
 
       await setDoc(doc(firestore, 'Profiles', userId), {
@@ -37,7 +40,6 @@ function SignUp() {
         createdAt: serverTimestamp(),
       });
 
-      Alert.alert("Success");
       
     } catch (e) {
       Alert.alert(`Something Went Wrong: ${e.message}`);
@@ -99,11 +101,13 @@ function SignUp() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:"white"
   },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor:"white"
   },
   View1: {
     backgroundColor: "white",
