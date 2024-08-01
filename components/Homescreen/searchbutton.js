@@ -51,11 +51,13 @@ const styles = StyleSheet.create({
     alignItems:"center",
     borderWidth: 2,
     borderColor: "#A51910",
+    marginVertical:3
     
   },
   Viewstyle:{
     flex:1,
-    paddingVertical:7,
+    height:"100%",
+    //marginVertical:10
     
   
   },

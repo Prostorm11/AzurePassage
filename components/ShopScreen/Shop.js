@@ -23,7 +23,7 @@ import {
   limit,
 } from "firebase/firestore";
 import ItemTile from "./itemTile";
-
+import Searchbutton from "../Homescreen/searchbutton";
 const ShopPage = () => {
   const [categories, setCategories] = useState([]);
   const [currentindex, setCurrentIndex] = useState(0);
@@ -178,7 +178,7 @@ const ShopPage = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <View style={styles.searchBar}>
+        {/* <View style={styles.searchBar}>
           <TextInput
             style={styles.input}
             placeholder="Search Item"
@@ -187,7 +187,8 @@ const ShopPage = () => {
           <TouchableOpacity style={styles.iconContainer}>
             <Icon name="search" size={24} color="#000" />
           </TouchableOpacity>
-        </View>
+        </View> */}
+        <Searchbutton></Searchbutton>
         <TouchableOpacity style={styles.notificationContainer}>
           <Icon name="notifications" size={24} color="#000" />
           {/* <View style={styles.notificationBadge}>
