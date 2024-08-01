@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("screen").width * 0.31,
     // backgroundColor:"blue",
     height: 190,
-    margin:1
   },
   View2style: {
     height: "70%",

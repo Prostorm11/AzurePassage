@@ -78,7 +78,7 @@ function SignUp() {
                 textAlignVertical: "center",
               }}
             >
-              Login
+              SignUp
             </Text>
           </TouchableOpacity>
           <View style={{ alignItems: "center", width: "100%" }}>
