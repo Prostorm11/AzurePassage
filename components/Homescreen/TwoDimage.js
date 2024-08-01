@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
   },
   View2style: {
     height: "70%",
-    backgroundColor: "red",
     borderRadius: 8,
   },
   View3style: {
