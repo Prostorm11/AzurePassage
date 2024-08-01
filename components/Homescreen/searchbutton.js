@@ -48,11 +48,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     gap: 10,
-    alignItems:"center"
+    alignItems:"center",
+    borderWidth: 2,
+    borderColor: "#A51910",
+    
   },
   Viewstyle:{
     flex:1,
-    paddingVertical:10
+    paddingVertical:7,
+    
   
   },
    textfieldstyle: {
