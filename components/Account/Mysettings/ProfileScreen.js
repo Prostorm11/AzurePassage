@@ -80,7 +80,7 @@ export default function ProfileScreen() {
               height: 50,
               width: 50,
               backgroundColor: "#FF3500",
-              borderRadius: "100%",
+              borderRadius: 25,
               justifyContent: "center",
               alignItems: "center",
             }}

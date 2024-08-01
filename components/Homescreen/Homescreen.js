@@ -126,7 +126,7 @@ function Homescreen() {
           }}
           source={require("@/assets/images/logow.png")}
         />
-       
+
         <Searchbutton></Searchbutton>
         <Icon name="notifications" size={24} color="#000" />
       </View>
@@ -235,19 +235,29 @@ function Homescreen() {
             </ScrollView>
           </View>
         </TouchableWithoutFeedback>
-        <View style={{borderRadius:20,backgroundColor:"#A51910",height:30,width:"50%",justifyContent:"center",alignItems:"center",marginHorizontal:10}}>
-              
-        <Text
+        <View
           style={{
-            color: "#fff",
+            borderRadius: 20,
+            backgroundColor: "#A51910",
             height: 30,
-            fontWeight: "bold",
-            flexShrink:1,
-            padding:3
+            width: "40%",
+            justifyContent: "center",
+            alignItems: "center",
+            marginHorizontal: 10,
           }}
         >
-          Recommended For You
-        </Text>
+          <Text
+            style={{
+              color: "#fff",
+              height: 30,
+              textAlignVertical: "center",
+              fontWeight: "bold",
+              flexShrink: 1,
+              padding: 3,
+            }}
+          >
+            Recommended For You
+          </Text>
         </View>
 
         <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
