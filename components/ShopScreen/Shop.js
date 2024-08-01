@@ -190,9 +190,9 @@ const ShopPage = () => {
         </View>
         <TouchableOpacity style={styles.notificationContainer}>
           <Icon name="notifications" size={24} color="#000" />
-          <View style={styles.notificationBadge}>
+          {/* <View style={styles.notificationBadge}>
             <Text style={styles.notificationText}>4</Text>
-          </View>
+          </View> */}
         </TouchableOpacity>
       </View>
       {loading ? (
@@ -351,6 +351,8 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   searchBar: {
+    borderWidth: 2,
+    borderColor: "#A51910",
     flex: 1,
     flexDirection: "row",
     backgroundColor: "#f2f2f2",
