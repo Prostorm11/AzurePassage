@@ -126,17 +126,8 @@ function Homescreen() {
           }}
           source={require("@/assets/images/logow.png")}
         />
-        {/* <Text style={{ color: "red", fontSize: 15, fontWeight: "bold" }}>
-          GlamCart
-        </Text> */}
-        <View style={styles.searchBar}>
-          <TextInput
-            style={styles.input}
-            placeholder="Search Item"
-            placeholderTextColor="#000"
-          />
-        </View>
-        {/* <EvilIcons name="bell" size={28} color="black" /> */}
+       
+        <Searchbutton></Searchbutton>
         <Icon name="notifications" size={24} color="#000" />
       </View>
       <ScrollView>
@@ -244,22 +235,20 @@ function Homescreen() {
             </ScrollView>
           </View>
         </TouchableWithoutFeedback>
+        <View style={{borderRadius:20,backgroundColor:"#A51910",height:30,width:"50%",justifyContent:"center",alignItems:"center",marginHorizontal:10}}>
+              
         <Text
-          backgroundColor="#A51910"
           style={{
-            marginLeft: 20,
-            textAlign: "center",
-            marginRight: 10,
             color: "#fff",
             height: 30,
             fontWeight: "bold",
-            width: 120,
-            textAlignVertical: "center",
-            borderRadius: 20,
+            flexShrink:1,
+            padding:3
           }}
         >
           Recommended For You
         </Text>
+        </View>
 
         <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
           {randomimages.map((item, key) => (
