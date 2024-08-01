@@ -3,6 +3,7 @@ import {
   Dimensions,
   Image,
   Pressable,
+  FlatList,
   ScrollView,
   StyleSheet,
   Text,
@@ -17,7 +18,10 @@ import useCountdownTimer from "./Timer";
 function SuperDeals(props) {
   const navigation = useNavigation();
   const [SearchBarColor, setSearchBarColor] = useState("pink");
-  const remainingTime = useCountdownTimer(new Date().getTime(), 20 * 24 * 60 * 60 * 1000); 
+  const remainingTime = useCountdownTimer(
+    new Date().getTime(),
+    20 * 24 * 60 * 60 * 1000
+  );
 
   const handleScroll = (event) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -32,7 +36,7 @@ function SuperDeals(props) {
     "https://static.vecteezy.com/system/resources/previews/019/901/879/non_2x/buy-now-sticker-and-badge-with-offer-and-discount-png.png";
 
   return (
-    <View style={{ flex: 1,backgroundColor:"white" }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={[styles.View2style, { backgroundColor: SearchBarColor }]}>
         <Pressable onPress={() => navigation.goBack()}>
           <View style={styles.backButton}>
@@ -59,10 +63,22 @@ function SuperDeals(props) {
             </View>
           </View>
           <View style={styles.Viewscroll2}>
-          <View style={{flexDirection:"row",justifyContent:"space-between",width:"100%",alignItems:"center",marginBottom:8}}>
-            <Text style={{fontSize:17,fontWeight:"bold"}}>Daily deals</Text>
-            <Text style={styles.remainingTimeText}>Ends: {remainingTime}</Text>
-          </View>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "100%",
+                alignItems: "center",
+                marginBottom: 8,
+              }}
+            >
+              <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+                Daily deals
+              </Text>
+              <Text style={styles.remainingTimeText}>
+                Ends: {remainingTime}
+              </Text>
+            </View>
             {ListSuperdeals.map((item, index) => (
               <Pressable
                 key={index}
@@ -83,6 +99,7 @@ function SuperDeals(props) {
                     <Image
                       source={{ uri: item.image }}
                       style={{
+                        borderRadius: 10,
                         resizeMode: "cover",
                         width: "100%",
                         height: "100%",
@@ -90,11 +107,52 @@ function SuperDeals(props) {
                     />
                   </View>
                   <View style={styles.productInfoContainer}>
-                    <Text style={{ marginVertical: 3 ,fontSize:16,fontWeight:"bold"}}>{item.title}</Text>
+                    <Text
+                      style={{
+                        marginLeft: 10,
+                        marginVertical: 3,
+                        fontSize: 20,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {item.title}
+                    </Text>
+                    <Text
+                      style={{
+                        marginLeft: 10,
+                        marginVertical: 3,
+                        fontSize: 15,
+                      }}
+                    >
+                      {item.description}
+                    </Text>
+
+                    <FlatList
+                      contentContainerStyle={{ marginTop: 20 }}
+                      horizontal
+                      scrollEnabled={false}
+                      data={[...item.carouselImages].slice(1)}
+                      renderItem={({ item }) => (
+                        <Image
+                          source={{ uri: item }}
+                          style={{
+                            borderRadius: 10,
+                            resizeMode: "cover",
+                            width: 50,
+                            height: 50,
+                          }}
+                        />
+                      )}
+                    />
+
                     <View style={styles.priceContainer}>
                       <View>
-                        <Text style={{ fontSize: 17 }}>GHS {item.newprice}</Text>
-                        <Text style={{color:"red"}}>{item.discount} off</Text>
+                        <Text style={{ fontSize: 17 }}>
+                          GHS {item.newprice}
+                        </Text>
+                        <Text style={{ color: "red" }}>
+                          {item.discount} off
+                        </Text>
                       </View>
                       <Image
                         source={{ uri: label }}
@@ -194,9 +252,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginVertical: 10,
     textAlign: "center",
-    backgroundColor:"black",
-    color:"white"
-   // width: "100%",
+    backgroundColor: "black",
+    color: "white",
+    // width: "100%",
   },
 });
 
