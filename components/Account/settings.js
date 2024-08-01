@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../firebaseConfig"; // Adjust this import based on your firebaseConfig setup
+import ModalSignin from "./ModalSignin";
+import Modal from "react-native-modal";
 
 function Settings(props) {
   const navigation = useNavigation();
+  const currentUser = auth.currentUser;
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -16,9 +20,12 @@ function Settings(props) {
       console.error("Error signing out: ", error);
     }
   };
+  const toggleMenu = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   return (
-    <View style={styles.View1style}>
+    <SafeAreaView style={styles.View1style}>
       <View style={{ gap: 0.5 }}>
         <View style={styles.View2style}>
           <Text style={{ fontSize: 18, fontWeight: "bold" }}>Settings</Text>
@@ -31,7 +38,7 @@ function Settings(props) {
             </Pressable>
           </View>
         </View>
-        <Pressable onPress={()=>navigation.navigate("profile")}>
+        <Pressable onPress={()=>currentUser?navigation.navigate("profile"):toggleMenu()}>
 
         <View style={styles.innerinner}>
           <Text>Profile</Text>
@@ -92,7 +99,16 @@ function Settings(props) {
       <Pressable style={styles.pressablestyle} onPress={handleLogout}>
         <Text style={{ color: "white", fontWeight: "bold" }}>Sign Out</Text>
       </Pressable>
-    </View>
+      <Modal
+        isVisible={isModalVisible}
+        onBackdropPress={toggleMenu}
+        style={styles.modalStyle}
+      >
+        <SafeAreaView style={styles.safeAreaViewStyle}>
+          <ModalSignin toggle={toggleMenu} />
+        </SafeAreaView>
+      </Modal>
+    </SafeAreaView>
   );
 }
 
@@ -101,6 +117,11 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 10,
     width: Dimensions.get("screen").width,
+  },
+  modalStyle: {
+    margin: 0,
+    justifyContent: "flex-end",
+    
   },
   View2style: {
     flexDirection: "row",
@@ -132,6 +153,12 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "red",
     height: "7%",
+  },
+  safeAreaViewStyle: {
+    flex: 1,
+    backgroundColor: "white",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
 });
 
