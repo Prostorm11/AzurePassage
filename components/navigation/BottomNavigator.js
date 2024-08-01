@@ -9,7 +9,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
-import Feed from "../Feed/Feed";
+import Feed from "../Feed/feed";
 import MainAccount from "../Account/MainAccount";
 
 function BottomNavigator() {

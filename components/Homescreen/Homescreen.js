@@ -3,8 +3,10 @@ import {
   Dimensions,
   Pressable,
   StyleSheet,
+  TouchableOpacity,
   Text,
   View,
+  FlatList,
   TextInput,
   ScrollView,
   Image,
@@ -12,6 +14,8 @@ import {
   Modal,
   SafeAreaView,
 } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+
 import { EvilIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import Wallpaper from "./Wallpaper";
@@ -25,26 +29,27 @@ import Searchbutton from "./searchbutton";
 import ModalSignin from "../Account/ModalSignin";
 import { auth } from "../../firebaseConfig";
 import { UserContext } from "../../Usercontext";
+const { width } = Dimensions.get("window");
 
 function Homescreen() {
   const [superImagesData, setSuperImagesData] = useState([]);
   const [femaleFashionData, setFemaleFashionData] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { userProfile, loading,productsData,Firestoreproducts } = useContext(UserContext);
-  const [more,setmore]=useState([]);
-  const currentUser=auth.currentUser
+  const { userProfile, loading, productsData, Firestoreproducts } =
+    useContext(UserContext);
+  const [more, setmore] = useState([]);
+  const currentUser = auth.currentUser;
 
-  const Myimage = [
-    require("@/assets/images/girlshoper.gif"),
-    require("@/assets/images/gadgets.gif"),
-  ];
-
+  // const Myimage = [
+  //   require("@/assets/images/girlshoper.gif"),
+  //   require("@/assets/images/gadgets.gif"),
+  // ];
+  const promos = ["1", "2", "3", "4"];
   const scrollViewRef = useRef(null);
-  const { width } = Dimensions.get("window");
   const [currentIndex, setCurrentIndex] = useState(0);
   const timeoutRef = useRef(null);
 
- /*  useEffect(()=>{
+  /*  useEffect(()=>{
     const images=[];
     productsData.variant[0].options.map((item,index)=>(
         images.push(item.image)
@@ -52,7 +57,7 @@ function Homescreen() {
     setmore(images)
   },[]) */
 
- /*  useEffect(() => {
+  /*  useEffect(() => {
     if (productsData && productsData.length > 0) {
       const images = productsData.map((item) => item.variant[0].options.map(option => option.image)).flat();
       setmore(images);
@@ -62,7 +67,7 @@ function Homescreen() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (scrollViewRef.current) {
-        let nextIndex = (currentIndex + 1) % Myimage.length;
+        let nextIndex = (currentIndex + 1) % promos.length;
         setCurrentIndex(nextIndex);
         scrollViewRef.current.scrollTo({
           x: nextIndex * width,
@@ -107,16 +112,32 @@ function Homescreen() {
   const closeModal = () => {
     setIsModalVisible(false);
   };
- //console.log(more)
+  //console.log(more)
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.View1Style}>
-        <Menu></Menu>
-        <Text style={{ color: "red", fontSize: 15, fontWeight: "bold" }}>
+        {/* <Menu></Menu> */}
+        <Image
+          style={{
+            width: 40,
+            height: 40,
+            backgroundColor: "#A51910",
+            borderRadius: 5,
+          }}
+          source={require("@/assets/images/logow.png")}
+        />
+        {/* <Text style={{ color: "red", fontSize: 15, fontWeight: "bold" }}>
           GlamCart
-        </Text>
-        <Searchbutton></Searchbutton>
-        <EvilIcons name="bell" size={28} color="black" />
+        </Text> */}
+        <View style={styles.searchBar}>
+          <TextInput
+            style={styles.input}
+            placeholder="Search Item"
+            placeholderTextColor="#000"
+          />
+        </View>
+        {/* <EvilIcons name="bell" size={28} color="black" /> */}
+        <Icon name="notifications" size={24} color="#000" />
       </View>
       <ScrollView>
         <ScrollView
@@ -125,31 +146,48 @@ function Homescreen() {
           ref={scrollViewRef}
           pagingEnabled
         >
-          <Wallpaper
-            picture={Myimage[0]}
+          {/* <Wallpaper
+            picture={"@/assets/Promo/1.png"}
             describe="Want The Best Female Apparel, Come Grab Yours Now!!"
             text1="Shop Smarter"
             text2="Not Harder!"
+          /> */}
+          <Image
+            style={styles.banner}
+            source={require("@/assets/Promo/1.png")}
           />
-          <Wallpaper
-            picture={Myimage[1]}
+          {/* <Wallpaper
+            picture={"Myimage[1]"}
             text1="Essential For"
             text2="Gamers"
             describe={"Grab The Latest And Poweful Gaming Accessories"}
+          /> */}
+          <Image
+            style={styles.banner}
+            source={require("@/assets/Promo/2.png")}
+          />
+          <Image
+            style={styles.banner}
+            source={require("@/assets/Promo/3.png")}
+          />
+          <Image
+            style={styles.banner}
+            source={require("@/assets/Promo/4.png")}
           />
         </ScrollView>
+
         <TouchableWithoutFeedback>
-          <View>
+          <View style={{ margin: 10 }}>
             <View style={{ flexDirection: "row" }}>
               <Text
                 style={{
                   color: "Pink",
-                  fontSize: 18,
+                  fontSize: 20,
                   fontStyle: "italic",
                   fontWeight: "bold",
                 }}
               >
-                Super<Text style={{ color: "red" }}>Deals</Text>
+                Super<Text style={{ color: "red" }}>Deals </Text>
               </Text>
               <AntDesign name="arrowright" size={24} color="black" />
             </View>
@@ -173,17 +211,17 @@ function Homescreen() {
           </View>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback>
-          <View>
+          <View style={{ margin: 10 }}>
             <View style={{ flexDirection: "row" }}>
               <Text
                 style={{
-                  color: "Pink",
+                  color: "red",
                   fontSize: 20,
                   fontStyle: "italic",
                   fontWeight: "bold",
                 }}
               >
-                Viva<Text style={{ color: "red" }}></Text>
+                {"Sale" + " "}
               </Text>
               <AntDesign name="arrowright" size={24} color="black" />
             </View>
@@ -206,6 +244,23 @@ function Homescreen() {
             </ScrollView>
           </View>
         </TouchableWithoutFeedback>
+        <Text
+          backgroundColor="#A51910"
+          style={{
+            marginLeft: 20,
+            textAlign: "center",
+            marginRight: 10,
+            color: "#fff",
+            height: 30,
+            fontWeight: "bold",
+            width: 120,
+            textAlignVertical: "center",
+            borderRadius: 20,
+          }}
+        >
+          Recommended For You
+        </Text>
+
         <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
           {randomimages.map((item, key) => (
             <TwoDimage
@@ -221,6 +276,7 @@ function Homescreen() {
               source={randomimages}
             />
           ))}
+
           {Firestoreproducts.map((item, key) => (
             <TwoDimage
               key={key}
@@ -245,7 +301,6 @@ function Homescreen() {
         onRequestClose={closeModal}
       >
         <SafeAreaView style={styles.modalOverlay}>
-
           <ModalSignin toggle={closeModal}></ModalSignin>
         </SafeAreaView>
       </Modal>
@@ -255,11 +310,30 @@ function Homescreen() {
 
 const styles = StyleSheet.create({
   View1Style: {
+    marginHorizontal: 10,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#bbbbc8",
+    // backgroundColor: "#bbbbc8",
     gap: 10,
     height: "8%",
+  },
+
+  banner: {
+    width: width - 16,
+    height: width * (1 / 1.78),
+    margin: 8,
+    borderRadius: 25,
+  },
+  searchBar: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#ffff",
+    borderRadius: 20,
+    height: "80%",
+    borderWidth: 2,
+    borderColor: "#A51910",
+    alignItems: "center",
+    paddingHorizontal: 10,
   },
   pressablestyle: {
     borderRadius: 19,
@@ -282,7 +356,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     marginTop: 10,
-    marginHorizontal:10,
+    marginHorizontal: 10,
     gap: 7,
   },
   modalOverlay: {
