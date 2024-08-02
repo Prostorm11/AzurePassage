@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Dimensions, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  Dimensions,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../firebaseConfig"; // Adjust this import based on your firebaseConfig setup
@@ -38,67 +45,76 @@ function Settings(props) {
             </Pressable>
           </View>
         </View>
-        <Pressable onPress={()=>currentUser?navigation.navigate("profile"):toggleMenu()}>
-
-        <View style={styles.innerinner}>
-          <Text>Profile</Text>
-          <FontAwesome name="angle-right" size={12} color="black" />
-        </View>
+        <Pressable
+          onPress={() =>
+            currentUser ? navigation.navigate("profile") : toggleMenu()
+          }
+        >
+          <View style={styles.innerinner}>
+            <Text>Profile</Text>
+            <FontAwesome name="angle-right" size={12} color="black" />
+          </View>
         </Pressable>
-        <Pressable onPress={()=>navigation.navigate("address")}>
-
-        <View style={styles.innerinner}>
-          <Text>Shipping address</Text>
-          <FontAwesome name="angle-right" size={12} color="black" />
-        </View>
-        </Pressable>
-      </View>
-      <View style={{ gap: 0.5 }}>
-        <Pressable >
-
-        <View style={styles.innerinner}>
-          <Text>Ship to</Text>
-          <FontAwesome name="angle-right" size={12} color="black" />
-        </View>
-        </Pressable>
-        <Pressable onPress={()=>navigation.navigate("currency")}>
-
-        <View style={styles.innerinner}>
-          <Text>Currency</Text>
-          <FontAwesome name="angle-right" size={12} color="black" />
-        </View>
-        </Pressable>
-        <Pressable onPress={()=>navigation.navigate("language")}>
-
-        <View style={styles.innerinner}>
-          <Text>Language</Text>
-          <FontAwesome name="angle-right" size={12} color="black" />
-        </View>
+        <Pressable onPress={() => navigation.navigate("address")}>
+          <View style={styles.innerinner}>
+            <Text>Shipping address</Text>
+            <FontAwesome name="angle-right" size={12} color="black" />
+          </View>
         </Pressable>
       </View>
       <View style={{ gap: 0.5 }}>
-        <Pressable onPress={()=>navigation.navigate("rate")}>
-
-        <View style={styles.innerinner}>
-          <Text>Rate Glamcart</Text>
-          <FontAwesome name="angle-right" size={12} color="black" />
-        </View>
+        <Pressable>
+          <View style={styles.innerinner}>
+            <Text>Ship to</Text>
+            <FontAwesome name="angle-right" size={12} color="black" />
+          </View>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate("currency")}>
+          <View style={styles.innerinner}>
+            <Text>Currency</Text>
+            <FontAwesome name="angle-right" size={12} color="black" />
+          </View>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate("language")}>
+          <View style={styles.innerinner}>
+            <Text>Language</Text>
+            <FontAwesome name="angle-right" size={12} color="black" />
+          </View>
+        </Pressable>
+      </View>
+      <View style={{ gap: 0.5 }}>
+        <Pressable onPress={() => navigation.navigate("rate")}>
+          <View style={styles.innerinner}>
+            <Text>Rate Glamcart</Text>
+            <FontAwesome name="angle-right" size={12} color="black" />
+          </View>
         </Pressable>
         <View style={styles.innerinner}>
           <Text>Privacy Policy</Text>
           <FontAwesome name="angle-right" size={12} color="black" />
         </View>
-        <Pressable onPress={()=>navigation.navigate("notifications")}>
-
-        <View style={styles.innerinner}>
-          <Text>Notification Settings</Text>
-          <FontAwesome name="angle-right" size={12} color="black" />
-        </View>
+        <Pressable onPress={() => navigation.navigate("notifications")}>
+          <View style={styles.innerinner}>
+            <Text>Notification Settings</Text>
+            <FontAwesome name="angle-right" size={12} color="black" />
+          </View>
         </Pressable>
       </View>
-      <Pressable style={styles.pressablestyle} onPress={handleLogout}>
-        <Text style={{ color: "white", fontWeight: "bold" }}>Sign Out</Text>
-      </Pressable>
+      {auth.currentUser === null && (
+        <Pressable
+          style={styles.pressablestyle}
+          onPress={() => {
+            navigation.navigate("user");
+          }}
+        >
+          <Text style={{ color: "white", fontWeight: "bold" }}>Sign In</Text>
+        </Pressable>
+      )}
+      {auth.currentUser !== null && (
+        <Pressable style={styles.pressablestyle} onPress={handleLogout}>
+          <Text style={{ color: "white", fontWeight: "bold" }}>Sign Out</Text>
+        </Pressable>
+      )}
       <Modal
         isVisible={isModalVisible}
         onBackdropPress={toggleMenu}
@@ -121,7 +137,6 @@ const styles = StyleSheet.create({
   modalStyle: {
     margin: 0,
     justifyContent: "flex-end",
-    
   },
   View2style: {
     flexDirection: "row",
@@ -150,6 +165,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     bottom: "5%",
+    borderRadius: 20,
     position: "absolute",
     backgroundColor: "red",
     height: "7%",

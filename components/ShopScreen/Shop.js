@@ -31,6 +31,7 @@ const ShopPage = () => {
   const [loading, setLoading] = useState(false);
   const [lastDoc, setLastDoc] = useState(null);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [searchterm, setsearchterm] = useState("");
 
   useEffect(() => {
     getCategoriesFromFirestore();
@@ -46,7 +47,6 @@ const ShopPage = () => {
         limit(10)
       );
       const snapshot = await getDocs(initialQuery);
-
       const lastVisible = snapshot.docs[snapshot.docs.length - 1];
       setLastDoc(lastVisible);
 
@@ -188,7 +188,7 @@ const ShopPage = () => {
             <Icon name="search" size={24} color="#000" />
           </TouchableOpacity>
         </View> */}
-        <Searchbutton></Searchbutton>
+        <Searchbutton value={searchterm}></Searchbutton>
         <TouchableOpacity style={styles.notificationContainer}>
           <Icon name="notifications" size={24} color="#000" />
           {/* <View style={styles.notificationBadge}>
@@ -237,7 +237,11 @@ const ShopPage = () => {
                 : [...categories[currentindex - 1].subcategories]
             }
             renderItem={({ item }) => (
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  setsearchterm(item.name);
+                }}
+              >
                 <View style={styles.card}>
                   <Image
                     style={{
@@ -345,6 +349,7 @@ const ShopPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: 70,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,

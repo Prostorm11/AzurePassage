@@ -41,10 +41,9 @@ export default function SignIn() {
   }
 
   return (
-    <KeyboardAvoidingView
-     behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.View1}
-    >
+    // <KeyboardAvoidingView
+    //  behavior={Platform.OS === "ios" ? "padding" : "height"}
+    <View style={styles.View1}>
       <InputText placeholder="Type Email" value={email} setvalue={setemail} />
       <InputText
         placeholder="Type Password"
@@ -112,18 +111,19 @@ export default function SignIn() {
           />
         </View>
       </View>
-    </KeyboardAvoidingView>
+      {/* </KeyboardAvoidingView> */}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   View1: {
-    padding: 10,
-    justifyContent: "center",
-    alignContent: "center",
+    // padding: 10,
+    // justifyContent: "center",
+    // alignContent: "center",
     // alignItems: "center",
-    backgroundColor: "white",
-    height: "100%",
+    // backgroundColor: "white",
+    // height: "100%",
   },
   View2: {
     marginTop: 20,

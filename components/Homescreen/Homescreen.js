@@ -98,7 +98,7 @@ function Homescreen() {
       setIsModalVisible(false);
     } else {
       timeoutRef.current = setTimeout(() => {
-        setIsModalVisible(true);
+        // setIsModalVisible(true);
       }, 10000);
     }
 
