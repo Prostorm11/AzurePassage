@@ -45,28 +45,49 @@ function MainAccount(props) {
   }, [userProfile]);
 
   const toggleMenu = () => {
-    setModalVisible(!isModalVisible);
+    // setModalVisible(!isModalVisible);
+
+    navigation.navigate("user");
   };
 
   const navigation = useNavigation();
   return (
     <View style={styles.View1style}>
       <View style={styles.View2style}>
-          {currentUser ? (
-        <Pressable onPress={() =>navigation.navigate("mainprofile")} style={{flexDirection:"row",gap:7,justifyContent:"center",alignItems:"center"}}>
-           <View style={{borderWidth:1,borderRadius:20,width:30,height:30,justifyContent:"center",alignItems:"center",backgroundColor:"#FF3500"}}>
-            <Text style={{ fontSize: 16, fontWeight: "bold"}}>{name[0]}</Text>
-           </View>
-            <Text style={{ fontSize: 16, fontWeight: "bold"}}>{name}</Text>
-        </Pressable>
-          ) : (
-            <Pressable onPress={() => toggleMenu()}>
-
+        {currentUser ? (
+          <Pressable
+            onPress={() => navigation.navigate("mainprofile")}
+            style={{
+              flexDirection: "row",
+              gap: 7,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{
+                borderWidth: 1,
+                borderRadius: 20,
+                width: 30,
+                height: 30,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#FF3500",
+              }}
+            >
+              <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                {name[0]}
+              </Text>
+            </View>
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>{name}</Text>
+          </Pressable>
+        ) : (
+          <Pressable onPress={() => toggleMenu()}>
             <Text style={{ fontSize: 16, fontWeight: "bold" }}>
               Sign in or register
             </Text>
-            </Pressable>
-          )}
+          </Pressable>
+        )}
 
         <View style={{ flexDirection: "row", gap: 5 }}>
           <Pressable
@@ -163,7 +184,9 @@ function MainAccount(props) {
           </View>
         </View>
         <View style={styles.View3style}>
-          <Text style={{ fontSize: 14, fontWeight: "bold" }}>Entertainment</Text>
+          <Text style={{ fontSize: 14, fontWeight: "bold" }}>
+            Entertainment
+          </Text>
           <View
             style={{
               flexDirection: "row",
@@ -173,11 +196,7 @@ function MainAccount(props) {
             }}
           >
             <Pressable style={{ width: 50, alignItems: "center" }}>
-              <SimpleLineIcons
-                name="game-controller"
-                size={30}
-                color="black"
-              />
+              <SimpleLineIcons name="game-controller" size={30} color="black" />
               <Text style={{ fontSize: 12 }}>The Play</Text>
             </Pressable>
             <Pressable style={{ width: 55, alignItems: "center" }}>
@@ -221,7 +240,7 @@ function MainAccount(props) {
           </View>
         </View>
 
-        <View style={{ height: 250, backgroundColor: "white" }}>
+        {/* <View style={{ height: 250, backgroundColor: "white" }}>
           <NavigationContainer independent={true}>
             <Wishlisit_history />
             <Stack.Navigator>
@@ -237,7 +256,7 @@ function MainAccount(props) {
               />
             </Stack.Navigator>
           </NavigationContainer>
-        </View>
+        </View> */}
       </ScrollView>
     </View>
   );

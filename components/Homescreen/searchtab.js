@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-function Searchtab() {
+function Searchtab({init}) {
     const navigation = useNavigation();
     return (
         <View style={styles.View1style}>
@@ -14,7 +14,7 @@ function Searchtab() {
           <AntDesign name="arrowleft" size={24} color="white" />
         </Pressable>
 
-        <Searchbutton></Searchbutton>
+        <Searchbutton init={init} ></Searchbutton>
       </View>
     );
 }
