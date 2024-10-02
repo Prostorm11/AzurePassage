@@ -29,7 +29,7 @@ function MainProfile(props) {
             style={{
               height: 70,
               width: 70,
-              borderRadius: "100%",
+              borderRadius: 35,
               backgroundColor: "#FF3500",
               alignItems: "center",
               justifyContent: "center",
