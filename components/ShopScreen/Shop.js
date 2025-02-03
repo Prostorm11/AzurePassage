@@ -36,8 +36,6 @@ const ShopPage = () => {
     getCategoriesFromFirestore();
   }, []);
 
- 
-
   const getCategoriesFromFirestore = async () => {
     setLoading(true);
     try {
@@ -202,7 +200,7 @@ const ShopPage = () => {
       ) : (
         <>
           <FlatList
-            keyExtractor={(item) => item.categoryid}
+            keyExtractor={(item, index) => index}
             style={styles.list}
             data={[{ name: "All Products" }, ...categories]}
             showsHorizontalScrollIndicator={false}
@@ -225,7 +223,7 @@ const ShopPage = () => {
           />
 
           <FlatList
-            keyExtractor={(item) => item.index}
+            keyExtractor={(item, index) => index}
             scrollEnabled={false}
             contentContainerStyle={{
               justifyContent: "center",
@@ -256,7 +254,7 @@ const ShopPage = () => {
                     style={{
                       textAlign: "center",
                       textAlignVertical: "center",
-                      fontFamily: "Medium",
+                      // fontFamily: "Medium",
                     }}
                   >
                     {item.name}
@@ -302,39 +300,37 @@ const ShopPage = () => {
           </ScrollView>
 
           <FlatList
-            data={
-              [
-                ...(currentindex === 0
-                  ? categories.reduce((accumulator, category) => {
-                      return accumulator.concat(
-                        category.subcategories.reduce((acc, sub) => {
-                          return acc.concat(sub.products);
-                        }, [])
-                      );
-                    }, [])
-                  : categories[currentindex - 1].subcategories.reduce(
-                      (accumulator, subcategory) => {
-                        accumulator.push(...subcategory.products);
-                        return accumulator;
-                      },
-                      []
-                    )),
-              ].filter((product) => {
-                if (sellingType === "Top Selling") {
-                  return product;
-                } else if (sellingType === "Super Deals") {
-                  return product.tags && product.tags.includes("Super Deal");
-                } else if (sellingType === "Sale") {
-                  return product.tags && product.tags.includes("Sale");
-                } else {
-                  return false;
-                }
-              })
-            }
+            data={[
+              ...(currentindex === 0
+                ? categories.reduce((accumulator, category) => {
+                    return accumulator.concat(
+                      category.subcategories.reduce((acc, sub) => {
+                        return acc.concat(sub.products);
+                      }, [])
+                    );
+                  }, [])
+                : categories[currentindex - 1].subcategories.reduce(
+                    (accumulator, subcategory) => {
+                      accumulator.push(...subcategory.products);
+                      return accumulator;
+                    },
+                    []
+                  )),
+            ].filter((product) => {
+              if (sellingType === "Top Selling") {
+                return product;
+              } else if (sellingType === "Super Deals") {
+                return product.tags && product.tags.includes("Super Deal");
+              } else if (sellingType === "Sale") {
+                return product.tags && product.tags.includes("Sale");
+              } else {
+                return false;
+              }
+            })}
             numColumns={2}
             scrollEnabled={false}
             renderItem={({ item }) => <ItemTile item={item} />}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item, index) => index}
             ListFooterComponent={renderFooter}
             onEndReached={loadMoreProducts}
             onEndReachedThreshold={0.1}
